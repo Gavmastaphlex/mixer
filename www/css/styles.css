@@ -1,0 +1,1539 @@
+head, body, ul, li, h1, p, div {
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+}
+
+body {
+	background-color: #E2BD79;
+	background-image:url('../images/flower_background.jpg');
+	
+}
+
+body, li, ul {
+	font-family: 'Text Me One', sans-serif;
+}
+
+#container {
+	width: 960px;
+	height: 100%;
+	margin: 0 auto;
+	background-image:url('../images/background.jpg');
+	background-repeat: repeat-y;
+	background-color: #CCCCCC;
+	box-shadow: 6px 6px 20px #000;
+}
+
+h1 {
+	margin: 40px 0 0 100px;
+	width: 350px;
+	height: 124px;
+	background-image: url('../images/logo3.png');
+	float: left;
+	display: block;
+	text-indent: -9999em;
+	overflow: hidden;
+}
+
+#header {
+	width: 960px;
+	height: 100%;
+	margin: 0 auto;
+}
+
+#login {
+	margin: 45px 100px 5px 0;
+	width: 265px;
+	height: 100%; 
+	background-color: #F1D8AF;
+	border: double;
+	border-width: 5px;
+	border-radius: 20px;
+	float: right;
+	box-shadow: 1px 1px 10px #555;
+}
+
+#login p {
+	margin: 7px 0;
+	font-size: 14px;
+	color: red;
+	text-align: center;
+}
+
+#login label {
+	margin: 0 0 0 17px;
+	height:10px;
+	width: 80px;
+	display: block;
+	float: left;
+}
+
+
+#login #userName, #login #userPassword {
+	width: 130px;
+}
+
+
+#loginButton {
+	width: 95px;
+	height: 25px;
+	background-color: transparent;
+	border: none;
+	background-image: url('../images/login_button_unpressed.png');
+	display: block;
+	text-indent: -9999em;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+#registerButton {
+	width: 95px;
+	height: 25px;
+	background-color: transparent;
+	border: none;
+	background-image: url('../images/register_button_unpressed.png');
+	display: block;
+	text-indent: -9999em;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+#loginButton:active {
+	background: url('../images/login_button_pressed.png') no-repeat bottom;
+} 
+
+#registerButton:active {
+	background: url('../images/register_button_pressed.png') no-repeat bottom;
+} 
+
+#login #username, #login #password {
+	width: 135px;
+}
+
+.loginFields {
+	margin: 13px 0 4px 6px;
+}
+
+.loginBtn {
+	margin: 10px 18px 10px;
+	float: left;
+}
+
+#loggedIn {
+	margin: 55px 90px 5px 0;
+	width: 265px;
+	height: 100px; 
+	background-color: #F1D8AF;
+	border: double;
+	border-width: 5px;
+	border-radius: 20px;
+	float: right;
+	box-shadow: 1px 1px 10px #555;
+}
+
+#loggedIn p {
+	font-size: 20px;
+	text-align: center;
+}
+
+#userPanelButton {
+	width: 95px;
+	height: 24px;
+	background-color: transparent;
+	border: none;
+	background-image: url('../images/user_panel_unpressed.png');
+	display: block;
+	text-indent: -9999em;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+#userPanelButton:active {
+	background: url('../images/user_panel_pressed.png') no-repeat bottom;
+} 
+
+#logoutButton {
+	width: 95px;
+	height: 25px;
+	background-color: transparent;
+	border: none;
+	background-image: url('../images/logout_button_unpressed.png');
+	display: block;
+	text-indent: -9999em;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+#logoutButton:active {
+	background: url('../images/logout_button_pressed.png') no-repeat bottom;
+} 
+
+#search {
+	margin: 10px 85px 0 0;
+	width: 280px;
+	height: 35px; 
+	float: right;
+	clear: right;
+}
+
+#searchInput {
+	width: 170px;
+	margin: 6px 0 0 10px;
+	border-radius: 10px;
+}
+
+#topNav {
+	margin: 30px auto 25px;
+	width: 815px;
+	height: 40px;
+}
+
+#topNav a {
+	color: black;
+}
+
+.evenTopNav {
+	margin: 0 13px;
+	padding: 5px 0 0 0;
+	width: 170px;
+	height: 25px;
+	float: left;
+	text-align: center;
+	text-decoration: none;
+	border-radius: 10px;
+	box-shadow: 1px 1px 4px #555;
+}
+
+.evenTopNav a {
+	text-decoration: none;
+	color: #000;
+	font-size: 18px;
+}
+
+#homeNav {
+	background-color: #ABCE29;
+	border:solid;
+}
+
+#homeNav:hover {
+	background-color: rgba(171, 206, 41, 0.5);
+}
+
+#recipesNav {
+	background-color: #6BCFAD;
+	border:solid;
+}
+
+#recipesNav:hover {
+	background-color: rgba(107, 207, 173, 0.5);
+}
+
+#contactNav {
+	background-color: #F2522E;
+	border:solid;
+}
+
+#contactNav:hover {
+	background-color: rgba(242, 82, 46, 0.5);
+}
+
+#aboutNav {
+	background-color: #D93B3A;
+	border:solid;
+}
+
+#aboutNav:hover {
+	background-color: rgba(217, 59, 58, 0.5);
+}
+
+#content {
+	margin: 0 auto;
+	width: 960px;
+	height: 100%; 
+}
+
+h2 {
+	text-align: center;
+	font-size: 46px;
+	margin: 0 0 10px 0;
+	padding: 0 0 0 0;
+}
+
+h3 {
+	text-align: center;
+	font-size: 26px;
+	margin: 0 0 35px 0;
+	padding: 0 0 0 0;
+} 
+
+h4 {
+	font-size: 21px;
+}
+
+#instructions {
+	margin: 10px auto 45px;
+	padding: 2px 10px 10px 10px;	
+	width: 725px;
+	height: 295px;
+	background-image: url('../images/index/instructions.jpg');
+	border: solid;
+	border-width: 3px; 
+	border-radius: 35px;
+	border-color: rgba(0, 0, 0, 0.3);
+	box-shadow: 1px 1px 10px #555;
+	font-family: 'Raleway', sans-serif;
+}
+
+#fork {
+	margin: 40px 10px;
+	width: 59px;
+	height: 225px;
+	float: left;
+}
+
+#knife {
+	margin: 40px 0 0 15px;
+	width: 41px;
+	height: 225px;
+	float: left;
+}
+
+#instructionsContent {
+	width: 500px;
+	height: 230px;
+	margin: 25px auto 0;
+	padding: 0 25px 25px;
+	background-color: sandybrown;
+	float: left;
+	border: solid;
+	border-width: 3px; 
+	border-radius: 50px;
+	border-color: rgba(0, 0, 0, 0.5);
+	font-size: 19px;
+}
+
+#instructionsContent h4 {
+	margin: 10px 0 20px 0;
+	padding: 0 0 0 0;
+	font-size: 20px;
+	text-align: center;
+}
+
+#instructionsContent p {
+	margin: 5px 0;
+}
+
+#ingredientBoxes {
+	margin: 0 auto;
+	width: 910px;
+	height: 455px;
+}
+
+#ingredients {
+	margin: 0 15px;
+	padding-left: 20px;
+	width: 500px;
+	height: 435px;
+	background-image: url('../images/index/ingredients2.jpg');
+	float: left;
+	border: solid;
+	border-width: 3px; 
+	border-radius: 35px;
+	border-color: rgba(0, 0, 0, 0.3);
+	box-shadow: 1px 1px 10px #555;
+}
+
+#ingredients p {
+	margin: 22px 0 0 0;
+	font-size: 14px;
+	text-align: center;
+}
+
+
+.ingredientTypes {
+	margin: 10px 0 10px;
+	float: left;
+}
+
+#basicTypes {
+	width: 190px;
+	height: 355px;
+}
+
+#specializedTypes {
+	width: 300px;
+	height: 355px;
+}
+
+.ingredientTypes h4 {
+	margin: 1px 0 15px;
+	padding: 0 0 0 0;
+	text-align: center;
+}
+
+
+.ingredientsContainer, .noscriptIngredientsContainer {
+	margin: 0 auto;
+	background-color: burlywood;
+	border: solid;
+	border-width: 3px; 
+	border-radius: 30px;
+	border-color: rgba(0, 0, 0, 0.7);
+}
+
+.ingredientsContainer ul, .noscriptIngredientsContainer ul {
+	margin: 5px 0 0 15px;
+}
+
+.ingredientsContainer li, .noscriptIngredientsContainer li {
+	margin: 5px 0;
+	width: 170px;
+	height: 100%;
+	float: left;
+	list-style: none;
+}
+
+
+#basicContainer {
+	width: 150px;
+	height: 320px;
+}
+
+#specializedContainer  {
+	width: 220px;
+	height: 280px;
+}
+
+#noscriptSpecializedContainer  {
+	width: 230px;
+	height: 320px;
+	overflow-y: scroll;
+}
+
+#specializedKeyword {
+	margin: 0 auto;
+	width: 225px;
+	height: 40px;
+}
+
+#specializedKeyword input {
+	width: 140px;
+}
+
+#specializedKeyword label {
+	margin: 0 10px 0 0;
+}
+
+
+.clearDiv {
+	clear: both;
+}
+
+#finalized {
+	margin: 0 15px;
+	width: 310px;
+	height: 433px;
+	background-image: url('../images/index/finalized3.jpg'); 
+	float: left;
+	border: solid;
+	border-width: 5px; 
+	border-radius: 35px;
+	border-color: rgba(0, 0, 0, 0.3);
+	box-shadow: 1px 1px 10px #555;
+}
+
+#finalized h4 {
+	margin: 12px 0 10px;
+	padding: 0 0 0 0;
+	text-align: center;
+}
+
+#finalized p {
+	font-size: 13px;
+	text-align: center;
+}
+
+#finalizedContainer {
+	margin: 10px 0 0 32px;
+	width: 230px;
+	height: 280px;
+	background-color: lightgrey;
+	border: solid;
+	border-width: 4px; 
+	border-radius: 30px;
+	border-color: rgba(0, 0, 0, 0.7);
+}
+
+#finalizedContainer li {
+	margin: 5px 0 0 15px;
+	width: 180px;
+	float: left;
+	list-style: none;
+}
+
+#finalizedContainer {
+	overflow-y: auto;
+}
+
+#mixItUp {
+	margin: 10px auto 0;
+	width: 121px;
+	height: 32px;
+	background-color: transparent;
+	border: none;
+	background-image: url('../images/index/mix_button_unpressed.png');
+	display: block;
+	text-indent: -9999em;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+#mixItUp:active {
+	background: url('../images/index/mix_button_pressed.png') no-repeat bottom;
+}
+
+.homeIngredients {
+background-color: transparent;
+border: none;
+cursor: pointer;
+font-family: 'Raleway', sans-serif;
+}
+
+
+#footer {
+	margin: 20px auto 0;
+	width: 780px;
+	height: 100%; 
+}
+
+#footer p {
+	text-align: center;
+	padding: 0 0 25px 0;
+}
+
+
+#bottomNav {
+	margin: 0 auto 1px;
+	width: 740px;
+	height: 45px; 
+}
+
+.evenBottomNav {
+	padding: 7px 0 0 0;
+	height: 35px;
+	display: inline;
+	float: left;
+	text-align: center;
+	text-decoration: none;
+
+}
+
+.evenBottomNav a {
+	text-decoration: none;
+	color: #000;
+	font-size: 17px;
+}
+
+.navSeperator {
+	padding: 2px 0 0 0;
+	margin: 0 30px;
+	width: 20px;
+	height: 30px;
+	float: left;
+	font-size: 25px;
+}
+
+
+#btmHome:hover {
+	color: #ABCE29;
+}
+
+#btmRecipes:hover {
+	color: #6BCFAD;
+}
+
+#btmContact:hover {
+	color: #ff8c00;
+}
+
+#btmAbout:hover {
+	color: #D93B3A;
+}
+
+#btmSiteMap:hover {
+	color: #00ff7f ;
+}
+
+#searchSummary {
+	width: 420px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#searchOptions {
+	margin: 0 auto 20px;
+	width: 392px;
+	height: 50px;
+}
+
+#newSearchBtn {
+	margin: 10px 14px;
+	width: 167px;
+	height: 32px;
+	background-color: transparent;
+	border: none;
+	background-image: url('../images/recipeResults/New_Search_Unpressed.png');
+	display: block;
+	text-indent: -9999em;
+	overflow: hidden;
+	cursor: pointer;
+	float: left;
+}
+
+#newSearchBtn:active {
+	background: url('../images/recipeResults/New_Search_Pressed.png') no-repeat bottom;	
+	}
+
+#previousSearchBtn {
+	margin: 10px 17px 0 9px;
+	width: 167px;
+	height: 32px;
+	background-color: transparent;
+	border: none;
+	background-image: url('../images/recipeResults/Previous_Search_Unpressed.png');
+	display: block;
+	text-indent: -9999em;
+	overflow: hidden;
+	cursor: pointer;
+	float: left;
+}
+
+#previousSearchBtn:active {
+	background: url('../images/recipeResults/Previous_Search_Pressed.png') no-repeat bottom;	
+	}
+
+
+
+#noRecipesImage {
+	display: block;
+	margin: 20px auto;
+	box-shadow: 1px 1px 10px #555;
+	border: double;
+	border-width: 5px;
+	border-radius: 40px;
+}
+
+#noResultsImage {
+	display: block;
+	margin: 20px auto;
+	box-shadow: 1px 1px 10px #555;
+	border: double;
+	border-width: 5px;
+	border-radius: 40px;
+}
+
+#recipeResultsContainer {
+	margin: 5px auto 10px;
+	width: 850px;
+	height: 100%;
+}
+
+.recipeResult {
+	margin: 30px 10px 0;
+	width: 250px;
+	height: 250px;
+	background-image: url("../images/recipeResults/notePaper.png");
+	box-shadow: 1px 1px 10px #555;
+	float: left;
+	border: dotted;
+	border-width: 5px;
+	border-color: rgba(205,133,63,0.7);
+	background-color: transparent;
+	
+}
+
+.recipeResult a {
+	cursor: pointer;
+	text-decoration: none;
+	color: #000;
+}
+
+.recipeResult img:hover {
+	box-shadow: 0 0 20px #FFFF33;
+}
+
+.recipeTitle {
+	margin: 10px auto 0;
+	height: 50px;
+	width: 240px;
+	overflow: hidden;
+	text-align: center;
+	font-size: 17px;
+}
+
+
+.recipeResult img {
+	display: block;
+	margin: 0 auto;
+	height: 150px;
+	width: 150px;
+	box-shadow: 1px 1px 10px #555;
+	border: double;
+	border-width: 5px;
+	border-radius: 40px;
+}
+
+.ingredientInfo {
+	margin: 15px 0 0;
+}
+
+
+.recipeResultsBottomSubmit {
+	height: 50px;
+}
+
+#pageNumbers {
+	float: left;
+	position: relative;
+	height: 30px;
+	left: 50%;
+}
+
+#pageNumbers ul {
+	float: left;
+	position: relative;
+	margin: 10px 0;
+	left: -50%;
+}
+
+
+#pageNumbers li {
+	float: left;
+	margin: 0 10px;
+	list-style: none;
+	font-size: 20px;
+}
+
+#deleteRecipeBox {
+	margin: 20px auto 0;
+	background-color: #EFDBB8;
+	padding: 20px;
+	width: 370px;
+	height: 70px;
+	border: double;
+	border-width: 5px;
+	border-radius: 40px;
+	box-shadow: 1px 1px 10px #555;
+
+}
+
+#confirmDeleteRecipe {
+	float: left;
+	margin: 15px 15px 0;
+	width: 150px;
+	height: 30px;
+	background-color: transparent;
+	border: none;
+	background-image: url('../images/recipeView/Delete_Recipe_Unpressed.png');
+	display: block;
+	text-indent: -9999em;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+#confirmDeleteRecipe:active {
+	background-image: url('../images/recipeView/Delete_Recipe_Pressed.png');
+}
+
+#cancelDeleteRecipe {
+	float: left;
+	margin: 15px 15px 0;
+	width: 150px;
+	height: 30px;
+	background-color: transparent;
+	border: none;
+	background-image: url('../images/recipeView/Cancel_Delete_Recipe_Unpressed.png');
+	display: block;
+	text-indent: -9999em;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+#cancelDeleteRecipe:active {
+	background-image: url('../images/recipeView/Cancel_Delete_Recipe_Pressed.png');
+}
+
+#recipe {
+	margin: 20px auto 0;
+	padding: 0 30px 15px 30px;
+	width: 760px;
+	height: 100%;
+	background-image: url('../images/recipeView/4925334098_788618e554.jpg');
+	border: ridge;
+	border-width: 10px;
+	border-color: rgba(189,183,107, 0.5);
+	box-shadow: 1px 1px 10px #555;
+}
+
+
+#backToMixerResults {
+	margin: 0 auto;
+	width: 193px;
+	height: 32px;
+	background-color: transparent;
+	border: none;
+	background-image: url('../images/recipeView/Back_To_Mixer_Results_Unpressed.png');
+	display: block;
+	text-indent: -9999em;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+#backToMixerResults:active {
+	background: url('../images/recipeView/Back_To_Mixer_Results_Pressed.png') no-repeat bottom;	
+}
+
+#backToRecipes {
+	margin: 0 auto;
+	width: 191px;	
+	height: 32px;
+	background-color: transparent;
+	border: none;
+	background-image: url('../images/recipeView/Back_To_Recipe_Unpressed.png');
+	display: block;
+	text-indent: -9999em;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+#backToRecipes:active {
+	background: url('../images/recipeView/Back_To_Recipe_Pressed.png') no-repeat bottom;	
+}
+
+#backToUserRecipes {
+	margin: 0 auto;
+	width: 185px;
+	height: 32px;
+	background-color: transparent;
+	border: none;
+	background-image: url('../images/recipeView/Back_To_User_Recipes_Unpressed.png');
+	display: block;
+	text-indent: -9999em;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+#backToUserRecipes:active {
+	background: url('../images/recipeView/Back_To_User_Recipes_Pressed.png') no-repeat bottom;	
+}
+
+#recipe h2 {
+	margin: 10px 0 5px;
+	text-align: center;
+	font-size: 46px;
+}
+
+#recipeBlurb {
+	margin: 0 auto;
+	width: 500px;
+	height: 100%;
+	text-align: center;
+	font-size: 18px;
+}
+
+#recipe img {
+	margin: 20px auto 35px;
+	display: block;
+	box-shadow: 1px 1px 10px #555;
+	border: double;
+	border-width: 5px;
+	border-radius: 40px;
+}
+
+#recipeAndMethod {
+	margin: 0 auto;
+	width: 750px;
+	height: 100%;
+}
+
+#recipeIngredients {
+	margin: 0 10px;
+	width: 300px;
+	height: 100%;
+	float: left;
+}
+
+#recipeIngredients h4 {
+	margin: 0 0 20px 0;
+	text-align: center;
+}
+
+#method {
+	margin: 0 10px;
+	width: 410px;
+	height: 100%;
+	float: left;
+}
+
+#method h4 {
+	margin: 0 0 20px 0;
+	text-align: center;
+}
+
+#recipeIngredients li {
+	list-style: none;
+}
+
+#recipeHistory {
+	margin: 40px auto 20px;
+	padding: 0 0 10px 0;
+	width: 350px;
+	height: 100%;
+	text-align: center;
+	background-color: rgba(255, 255, 255, 0.5);
+	border: solid;
+	border-width: 2px;
+	border-radius: 10px;
+}
+
+
+#editRecipeButton {
+	float: left;
+	margin: 0 15px;
+	width: 150px;
+	height: 30px;
+	background-color: transparent;
+	border: none;
+	background-image: url('../images/recipeView/Edit_Recipe_Unpressed.png');
+	display: block;
+	text-indent: -9999em;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+#editRecipeButton:active {
+	background: url('../images/recipeView/Edit_Recipe_Pressed.png') no-repeat bottom;	
+}
+
+#deleteRecipeButton {
+	float: left;
+	margin: 0 15px;
+	width: 150px;
+	height: 30px;
+	background-color: transparent;
+	border: none;
+	background-image: url('../images/recipeView/Delete_Recipe_Unpressed.png');
+	display: block;
+	text-indent: -9999em;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+#deleteRecipeButton:active {
+	background: url('../images/recipeView/Delete_Recipe_Pressed.png') no-repeat bottom;	
+}
+
+#previewOptions {
+	margin: 40px auto 20px;
+	padding: 0 0 10px 0;
+	width: 300px;
+	height: 100%;
+	text-align: center;
+	background-color: rgba(255, 255, 255, 0.5);
+	border: solid;
+	border-width: 2px;
+	border-radius: 10px;
+}
+
+
+#previewOptions li {
+	list-style: none;
+}
+
+#recipeHistory ul {
+	margin: 5px 0;
+}
+
+#recipeHistory li {
+	margin: 2px 0;
+	list-style: none;
+}
+
+#recipeHistory a {
+	margin: 0 5px 5px 15px;
+}
+
+#recipeForm {
+	margin: 0 auto;
+	padding: 30px;
+	width: 500px;
+	height: 100%;
+	background-image: url('../images/recipeView/4925334098_788618e554.jpg');
+	border:solid;
+	border-width: 2px;
+	box-shadow: 1px 1px 10px #555;
+}
+
+.requiredError {
+	margin: 0 0 0 220px;
+	width: 120px;
+	color: red;
+}
+
+#nameDescriptionUpload label {
+	margin: 10px 0;
+	width: 120px;
+	float: left;
+	text-align: right;
+}
+
+#nameDescriptionUpload input {
+	width: 300px;
+	margin: 10px 20px 0 0;
+	float: right;
+}
+
+#nameDescriptionUpload textarea {
+	margin: 10px 20px 0 0;
+	width: 300px;
+	height: 150px;
+	float: right;
+}
+
+#recipeThumbnailImage {
+	width: 150px;
+	height: 100%;
+	margin: 0 auto;
+}
+
+#recipeThumbnailImage img {
+	margin: 10px 0 0 0;
+	width: 150px;
+	height: 150px;
+	border: double;
+	border-width: 5px;
+	border-radius: 40px;
+}
+
+#formAddIngredients label {
+	margin: 10px 0 0 80px;
+	width: 120px;
+	float: left;
+	clear: left;
+	text-align: right;
+}
+
+#formAddIngredients input {
+	width: 145px;
+	margin: 10px 100px 0 0;
+	float: right;
+}
+
+#formAddIngredients select {
+	width: 150px;
+	margin: 10px 100px 0 0;
+	float: right;
+}
+
+#ingredientButtons {
+	margin: 20px auto 20px;
+	width: 280px;
+}
+
+#formConfirmedIngredients fieldset {
+	margin: 15px auto 15px;
+	padding: 20px;
+	width: 400px;
+	height: 100%;
+}
+
+#formConfirmedIngredients form {
+	margin: 5px 0 5px 0;
+}
+
+#formAddAndDeleteIngredients #formConfirmedIngredients p {
+	width: 200px;
+	margin: 0 auto;
+	padding: 0 0 0 0;
+}
+
+#formAddAndDeleteIngredients #formConfirmedIngredients input {
+	float: right;
+	height: 22px;
+	margin: 0 10px 0 0;
+}
+
+
+#formAddAndDeleteIngredients p {
+	text-align: center;
+	margin: 0 auto;
+	width: 350px;
+}
+
+#confirmIngredientBtn {
+	margin: 15px auto 0;
+	display: block;
+	width: 150px;
+}
+
+#newIngredient {
+	margin: 7px auto 0;
+	display: block;
+	width: 200px;
+	height: 17px;
+}
+
+
+#addNewIngredient {
+	margin: 10px auto 0;
+	display: block;
+	width: 150px;
+}
+
+#formAddAndDeleteIngredients .ingredientsError  {
+	margin: 0 0 0 0;
+	text-align: center;
+	color: red;
+}
+
+#newIngredMsg  {
+	margin: 10px 0 0 0;
+	text-align: center;
+	color: #458B00;
+}
+
+#newIngredientSection {
+	margin: 0 0 20px 0;
+}
+
+#newIngredientSection label {
+	margin: 10px 30px 0 20px;
+	width: 120px;
+	float: left;
+	clear: left;
+	text-align: right;
+}
+
+#newIngredientSection select {
+	width: 170px;
+	margin: 10px 20px 0 0;
+	float: left;
+}
+
+#newIngredientSection input {
+	width: 90px;
+	margin: 8px 0 0 0;
+	float: left;
+}
+
+#newIngredientSection p {
+	margin: 10px auto;
+}
+
+#deleteNewIngredients {
+	margin: 10px auto;
+	width: 150px;
+	height: 100%;
+}
+
+#formMethod label {
+	margin: 10px 0;
+	width: 60px;
+	float: left;
+	clear: left;
+	text-align: right;
+}
+
+#formMethod textarea {
+	margin: 10px 20px 10px 0;
+	width: 400px;
+	height: 300px;
+	float: right;
+	overflow-y: scroll;
+}
+
+#formMethod fieldset {
+	height: 100%;
+
+}
+
+#recipeMethodMsg {
+	margin: 0 0 0 160px;
+	width: 120px;
+	color: red;
+}
+
+#navigationButton {
+	margin: 0 auto;
+	width: 80px;
+	height: 100%;
+	padding: 30px 0 0 0;
+}
+
+#navigationButtons {
+	margin: 0 auto;
+	width: 210px;
+	height: 100%;
+	padding: 30px 0 0 0;
+}
+
+#finalNavigationButtons {
+	margin: 0 auto;
+	width: 238px;
+	height: 100%;
+	padding: 30px 0 0 0;
+}
+
+#navigationButtons input {
+	width: 100px;
+}
+
+#registerForm {
+	margin: 0 auto;
+	padding: 30px;
+	width: 470px;
+	height: 100%;
+	background-image: url('../images/recipeView/4925334098_788618e554.jpg');
+	border:solid;
+	border-width: 2px;
+	box-shadow: 1px 1px 10px #555;
+}
+
+#registerDetails label {
+	margin: 10px 0 10px 20px;
+	width: 120px;
+	float: left;
+	clear: left;
+	text-align: right;
+}
+
+#registerDetails input {
+	width: 250px;
+	margin: 10px 40px 0 0;
+	float: right;
+}
+
+#registerBtn {
+	width: 150px;
+	display: block;
+	margin: 20px auto;
+}
+
+.registerError {
+	text-align: right;
+	margin: 0 50px 0 0;
+	color: red;
+	clear: both;
+}
+
+
+#registeredImage {
+	width: 400px;
+	height: 376px;
+	display: block;
+	margin: 0 auto;
+}
+
+#contactForm {
+	margin: 0 auto;
+	padding: 30px;
+	width: 470px;
+	height: 100%;
+	background-image: url('../images/recipeView/4925334098_788618e554.jpg');
+	border:solid;
+	border-width: 2px;
+	box-shadow: 1px 1px 10px #555;
+}
+
+#contactForm label {
+	margin: 10px 0 0 50px;
+	width: 120px;
+	float: left;
+	clear: left;
+	text-align: right;
+}
+
+#contactForm input {
+	width: 180px;
+	margin: 10px 90px 0 0;
+	float: right;
+}
+
+#contactForm textarea {
+	width: 180px;
+	margin: 10px 90px 0 0;
+	float: right;
+}
+
+#contactForm p {
+	text-align: center;
+}
+
+#contactForm #contactSubmit {
+	margin: 20px 185px 20px 0;
+	width: 90px;
+}
+
+.contactError {
+	margin: 20px 90px 0 0;
+	text-align: right;
+	color: red;
+}
+
+.searchResult {
+	margin: 20px auto 0;
+	background-image: url('../images/recipeView/4925334098_788618e554.jpg');
+	width: 600px;
+	height: 100px;
+	border: solid;
+	border-radius: 10px;
+}
+
+#userOptionsContainer {
+	margin: 0 auto;
+	width: 680px
+}
+
+.userOptions {
+	display: block;
+	float: left;
+	width: 290px;
+	height: 300px;
+	background-color: white;
+	margin: 20px;
+	border: double;
+	border-width: 5px;
+	border-radius: 10px;
+	border-color: black;
+	text-indent: -9999em;
+	overflow: hidden;
+}
+
+#sitemapContainer {
+	margin: 0 auto;
+	width: 75px;
+	font-size: 20px;
+	text-align: center;
+
+}
+
+#sitemapContainer a {
+	margin: 10px 0;
+}
+
+
+.userOptions:hover {
+	box-shadow: 0 0 20px #FFFF33;
+}
+
+#addRecipeOption {
+	background-image: url("../images/loggedIn/addRecipe.gif");
+}
+
+#viewRecipesOption {
+	background-image: url("../images/loggedIn/yourRecipes.gif");
+}
+
+#editDetailsOption {
+	background-image: url("../images/loggedIn/editDetails.gif");
+}
+
+#changePasswordOption {
+	background-image: url("../images/loggedIn/changePassword.gif");
+}
+
+#deleteProfileOption {
+	background-image: url("../images/loggedIn/deleteProfile.gif");
+}
+
+#editAdminDetailsOption {
+	background-image: url("../images/loggedIn/adminDetails.gif");
+}
+
+#viewAllUsersOption {
+	background-image: url("../images/loggedIn/viewAllUsers.gif");
+}
+
+#deleteSuccessful {
+	text-align: center;
+	font-size: 26px;
+	margin: 0 0 10px 0;
+	padding: 0 0 0 0;
+}
+
+.userList {
+	margin: 0 auto;
+	font-size: 22px;
+	list-style: none;
+	display: block;
+	width: 180px;
+	color: #000;
+}
+
+.userList:hover {
+	background-color: #F64;
+}
+
+#userListContainer {
+	margin: 0 auto;
+	padding: 10px 0;
+	background-color: rgba(255, 255, 255, 0.3);
+	width: 350px;
+	border: double;
+	border-width: 7px;
+	border-radius: 20px;
+	text-align: center;
+}
+
+
+#userSummaryContainer {
+	margin: 50px auto;
+	background-color: rgba(255, 255, 255, 0.3);
+	width: 400px;
+	border: double;
+	border-width: 7px;
+	border-radius: 20px;
+
+}
+
+#userSummaryContainer ul {
+	margin: 20px 0;
+}
+
+#userSummaryContainer li {
+	font-size: 18px;
+	margin: 4px 0 4px 30px;
+	list-style: none;	
+}
+
+#backToUserList {
+	height: 32px;
+	width: 182px;
+	background-image: url('../images/userList/List_Back_to_User_List_Unpressed.png');
+	display: block;
+	text-indent: -9999em;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+#backToUserList:active {
+	background-image: url('../images/userList/List_Back_to_User_List_Pressed.png');
+}
+
+#usersRecipes {
+	height: 32px;
+	width: 182px;
+	background-image: url('../images/userList/List_User_Recipes_Unpressed.png');
+	display: block;
+	text-indent: -9999em;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+#usersRecipes:active {
+	background-image: url('../images/userList/List_User_Recipes_Pressed.png');
+}
+
+#deleteUserBtn {
+	height: 32px;
+	width: 182px;
+	background-color: transparent;
+	border: none;
+	background-image: url('../images/userList/List_Delete_User_Unpressed.png');
+	display: block;
+	text-indent: -9999em;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+#deleteUserBtn:active {
+	background-image: url('../images/userList/List_Delete_User_Pressed.png');
+}
+
+#deleteUserBox {
+	margin: 20px auto 0;
+	padding: 20px;
+	width: 330px;
+	height: 90px;
+	background-color: tomato; 
+	border: double;
+	border-width: 5px;
+	border-radius: 40px;
+	box-shadow: 1px 1px 10px #555;
+	text-align: center;
+}
+
+#confirmDeleteUser {
+	float: left;
+	margin: 10px 20px 0;
+	width: 125px;
+	height: 32px;
+	background-color: transparent;
+	border: none;
+	background-image: url('../images/userList/Delete_User_Unpressed.png');
+	display: block;
+	text-indent: -9999em;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+#confirmDeleteUser:active {
+	background-image: url('../images/userList/Delete_Recipe_Pressed.png');
+}
+
+#cancelDeleteUser {
+	float: left;
+	margin: 10px 20px 0;
+	width: 125px;
+	height: 32px;
+	background-color: transparent;
+	border: none;
+	background-image: url('../images/userList/Cancel_Delete_User_Unpressed.png');
+	display: block;
+	text-indent: -9999em;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+#cancelDeleteUser:active {
+	background-image: url('../images/userList/Cancel_Delete_User_Pressed.png');
+}
+
+.adminOptionButtons {
+	margin: 10px auto;
+}
+
+#adminOptionButtonsContainer {
+	margin: 0 auto 20px;
+	width: 270px;
+	height: 100%;
+}
+
+#backToUserDetails {
+	height: 32px;
+	width: 182px;
+	margin: 0 auto 20px;
+	background-image: url('../images/userList/List_Back_to_User_Details_Unpressed.png');
+	display: block;
+	text-indent: -9999em;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+#backToUserDetails:active {
+	background-image: url('../images/userList/List_Back_to_User_Details_Pressed.png');
+}
+
+#aboutContainer {
+	width: 500px;
+	margin: 40px auto 40px;
+	font-size: 20px;
+}
+
+#unauthorizedPic {
+	display: block;
+	margin: 20px auto;
+	border: double;
+	border-width: 5px;
+	border-radius: 40px;
+	box-shadow: 10px 10px 20px;
+}
