@@ -96,7 +96,7 @@ class RegisterView extends View {
 			    				*/
 			    				if ($ok == true && !$confirmPasswordMsg) {
 			                        	$html .= '<h3>Your details have been successfully updated.</h3>'."\n";
-			                        	$html .= '<img src="images/happy-chef2.png" id="registeredImage" alt="Success Picture" />'."\n";
+			                        	$html .= '<img src="images/happy-chef.png" id="registeredImage" alt="Success Picture" />'."\n";
 			                        	$_SESSION['userName'] = $_POST['registerUserName'];
 
 			                        } else {

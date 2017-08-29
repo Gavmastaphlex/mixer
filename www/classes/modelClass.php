@@ -29,6 +29,12 @@ class Model extends Dbase {
         
     }
 
+    public function print_r2($val){
+        echo '<pre>';
+        print_r($val);
+        echo  '</pre>';
+    }
+
 
     public function checkUserSession() {
         

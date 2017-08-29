@@ -14,7 +14,7 @@
         	//run a query to return names starting with whatever the user has typed into the text field
 
         	// % is the wildcard character that will match any character any number of times. a.k.a begins with.
-        	$qry = "SELECT ingredientID, ingredientName FROM ingredients WHERE ingredientName LIKE '%$ingredient%' AND basicIngredient = '0' ORDER BY ingredientName LIMIT 9";
+        	$qry = "SELECT ingredientID, ingredientName FROM ingredients WHERE ingredientName LIKE '%$ingredient%' ORDER BY ingredientName LIMIT 9";
 
                 $rs = $db -> query($qry);
 

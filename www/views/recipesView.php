@@ -407,22 +407,46 @@ class RecipesView extends View {
             V
             It is used to display recipes that were previously returned by the Mix It Up search.
         */
+
+
+        // foreach($recipes as $recipe){
+
+        //     $html .= '<div class="recipeResult">'."\n";
+
+        //     $html .= '<h4 class="recipeTitle"><a href="index.php?page=recipe&amp;id='.$recipe['recipeID'].'#backToMixerResults" id="recipe'.$recipe['recipeID'].'">'.$recipe['recipeName'].'</a></h4>'."\n";       
+
+        //     $html .= '<a href="index.php?page=recipe&amp;id='.$recipe['recipeID'].'#backToMixerResults" >'."\n";       
+
+        //     if($recipe['recipeImage']) {
+        //         $html .= '<img src="uploads/thumbnails/'.$recipe['recipeImage'].'" class="recipeImage" alt = "'.htmlspecialchars($recipe['recipeName']).' Picture" />'."\n";
+        //     } else {
+        //         $html .= '<img src="images/recipeView/noImage.png" class="recipeImage" alt="No Image" />'."\n";
+        //     }
+        //     $html .= '</a>'."\n";
+
+        //     $html .= '</div>'."\n";
+
+        // }
+
         foreach($recipes as $recipe){
-
-            $html .= '<div class="recipeResult">'."\n";
-
-            $html .= '<h4 class="recipeTitle"><a href="index.php?page=recipe&amp;id='.$recipe['recipeID'].'#backToMixerResults" id="recipe'.$recipe['recipeID'].'">'.$recipe['recipeName'].'</a></h4>'."\n";       
-
-            $html .= '<a href="index.php?page=recipe&amp;id='.$recipe['recipeID'].'#backToMixerResults" >'."\n";       
+            
+            $html .= '<figure class="recipeResult effect-bubba">'."\n";
 
             if($recipe['recipeImage']) {
                 $html .= '<img src="uploads/thumbnails/'.$recipe['recipeImage'].'" class="recipeImage" alt = "'.htmlspecialchars($recipe['recipeName']).' Picture" />'."\n";
             } else {
                 $html .= '<img src="images/recipeView/noImage.png" class="recipeImage" alt="No Image" />'."\n";
             }
-            $html .= '</a>'."\n";
 
-            $html .= '</div>'."\n";
+            $html .= '<a href="index.php?page=recipe&amp;id='.$recipe['recipeID'].'#backToMixerResults" >'."\n";   
+
+            $html .= '<figcaption>'."\n";
+            $html .= '<h2 class="recipeTitle">'.$recipe['recipeName'].'</h2>'."\n";       
+            $html .= '</figcaption>'."\n";
+
+            $html .= '</a>'."\n";
+            $html .= '</figure>'."\n";
+
 
         }
 
@@ -474,25 +498,35 @@ class RecipesView extends View {
         */
         foreach($recipeInfo as $recipe) {
 
-        $html .= '<div class="recipeResult">'."\n";
 
-        $html .= '<h4 class="recipeTitle"><a href="index.php?page=recipe&amp;id='.$recipe['recipeID'].'#backToRecipes" id="recipe'.$recipe['recipeID'].'">'.$recipe['recipeName'].'</a></h4>'."\n";       
 
-        $html .= '<a href="index.php?page=recipe&amp;id='.$recipe['recipeID'].'';
-        if(isset($_GET['id']) || $_GET['browseUserRecipes']) {
-            $html .= '&amp;userID='.$_GET['browseUserRecipes'].'#backToUserRecipes" >'."\n";
-        } else {
-            $html .= '#backToRecipes" >'."\n";
-        }
+       $html .= '<figure class="recipeResult effect-bubba">'."\n";
+
+        
 
         if($recipe['recipeImage']) {
             $html .= '<img src="uploads/thumbnails/'.$recipe['recipeImage'].'" class="recipeImage" alt = "'.htmlspecialchars($recipe['recipeName']).' Picture" />'."\n";
         } else {
             $html .= '<img src="images/recipeView/noImage.png" class="recipeImage" alt="No Image" />'."\n";
         }
-        $html .= '</a>'."\n";
+        
 
-        $html .= '</div>'."\n";
+        $html .= '<a href="index.php?page=recipe&amp;id='.$recipe['recipeID'];
+
+        if(isset($_GET['id']) || $_GET['browseUserRecipes']) {
+            $html .= '&amp;userID='.$_GET['browseUserRecipes'].'#backToUserRecipes" ';
+        } else {
+            $html .= '#backToRecipes" ';
+        }
+
+        $html .= 'id="recipe'.$recipe['recipeID'].'">'."\n";
+
+        $html .= '<figcaption>'."\n";
+
+        $html .= '<h2 class="recipeTitle">'.$recipe['recipeName'].'</h2>'."\n";       
+        $html .= '</figcaption>'."\n";
+        $html .= '</a>'."\n";
+        $html .= '</figure>'."\n";
 
 
         }   

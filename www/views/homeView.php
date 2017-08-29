@@ -55,18 +55,9 @@ class HomeView extends View {
             unset($_SESSION['pageNum']);
 		}
 
-        $html .= '<h2>'.$this -> pageInfo['pageHeading'].'</h2>'."\n";
+        $html .= '<!--h2>'.$this -> pageInfo['pageHeading'].'</h2-->'."\n";
 
         $html .= '<h3>The Dynamic Recipe Generator</h3>'."\n";
-		$html .= '<!--div id="instructions">'."\n";
-		$html .= '<img src="images/index/fork.png" alt="Fork" id="fork" class="cutlery" />'."\n";
-		$html .= '<div id="instructionsContent">'."\n";
-		$html .= '<h4>*THE LOW DOWN*</h4>'."\n";
-		$html .= '<p>Enter all the ingredients in your pantry into this site, and once you press the "Mix It Up" button all the recipes you can make are displayed!</p> <br />'."\n";
-		$html .= '<p>You\'ll need to put in the exact ingredients for a recipe to be matched, so that then you know you can definitely make it.</p>'."\n";
-		$html .= '</div>'."\n";
-		$html .= '<img src="images/index/knife.png" alt="Knife" id="knife" class="cutlery" />'."\n";
-		$html .= '</div-->'."\n";
 		$html .= '<div id="ingredientBoxes">'."\n";
 		$html .= '<div id="ingredients">'."\n";
 		$html .= '<div id="basicTypes" class="ingredientTypes">'."\n";
@@ -125,9 +116,6 @@ class HomeView extends View {
 		            $html .= $this -> displayfinalizedIngredients();
 		        }
 
-		$html .= '<li>'."\n";
-		$html .= '</li>'."\n";
-
         $html .= '</ul>'."\n";
 		$html .= '</div>'."\n";
 		$html .= '<form method="post" action="index.php?page=recipes#content" >'."\n";
@@ -135,8 +123,6 @@ class HomeView extends View {
 		$html .= '</form>'."\n";
 		$html .= '</div>'."\n";
 		$html .= '</div>'."\n";
-
-		$html .= '<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>'."\n";
         $html .= '<script type="text/javascript" src="js/ingredientAutocomplete.js"></script>'."\n";
                 
         return $html;        
