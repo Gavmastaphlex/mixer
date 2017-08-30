@@ -72,9 +72,9 @@ Ehtml, body, .perspective {
 
 /* Outer Nav */
 .outer-nav {
-    position: absolute;
+	position: absolute;
     height: auto;
-    font-size: 2.7em;
+    font-size: 4em;
 }
 
 .outer-nav.vertical {
@@ -87,8 +87,8 @@ Ehtml, body, .perspective {
 
 .outer-nav.horizontal {
     left: 50%;
-    width: 75%;
-    max-width: 1000px;
+    width: 95%;
+    /*max-width: 1000px;*/
     text-align: center;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
@@ -103,7 +103,7 @@ Ehtml, body, .perspective {
 }
 
 .outer-nav.top {
-    top: 13%;
+    top: 33%;
 }
 
 .outer-nav.bottom {
@@ -122,9 +122,9 @@ Ehtml, body, .perspective {
 	transform-style: preserve-3d;
 }
 
-.outer-nav > a:hover {
-	color: #ffdccd;
-}
+/*.outer-nav > a:hover {
+	color: #777;
+}*/
 
 .outer-nav.vertical a {
 	display: block;
@@ -187,9 +187,22 @@ Ehtml, body, .perspective {
 	transition: transform 0.4s, opacity 0.4s;
 }
 
-.effect-rotatetop .outer-nav > a:hover {
-	color: #777;
+
+.effect-rotatetop .outer-nav > a:after {
+	content: '';
+    display: block;
+    margin: 1vw 0px 0px 0px;
+    height: .4vw;
+    width: 0px;
+    background: transparent;
+    transition: width .5s ease, background-color .5s ease;
 }
+
+.effect-rotatetop .outer-nav > a:hover:after {
+	width: 100%;
+    background: #000;
+}
+
 
 .effect-rotatetop.animate .outer-nav > a, .effect-rotatetop.animate .outer-nav #login, .effect-rotatetop.animate .outer-nav #loggedIn, .effect-rotatetop.animate .outer-nav .login-box {
 	opacity: 1;
@@ -226,12 +239,6 @@ Ehtml, body, .perspective {
 	-webkit-transition-delay: 0.24s;
 	transition-delay: 0.24s;
 }
-
-
-
-
-
-
 
 
 /* Effect Lay Down */
@@ -302,6 +309,21 @@ Ehtml, body, .perspective {
 .effect-laydown.animate .outer-nav > a:first-child {
 	-webkit-transition-delay: 0.24s;
 	transition-delay: 0.24s;
+}
+
+.effect-laydown .outer-nav > a:after {
+	content: '';
+    display: block;
+    margin: 1vw 0px 0px 0px;
+    height: .4vw;
+    width: 0px;
+    background: transparent;
+    transition: width .5s ease, background-color .5s ease;
+}
+
+.effect-laydown .outer-nav > a:hover:after {
+	width: 100%;
+    background: #000;
 }
 
 .outer-nav > a {

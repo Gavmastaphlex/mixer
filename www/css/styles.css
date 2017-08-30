@@ -9,7 +9,7 @@ head, body, ul, li, h1, p, div {
 }
 
 html { 
-  background: url(../images/background.jpg) no-repeat center center fixed; 
+  background: url(../images/background4.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -27,71 +27,109 @@ body, li, ul {
 }
 
 h1 {
-	margin: 7px auto;
+    margin: 5px auto 0px;
     font-size: 100px;
-    width: 292px;
-    height: 124px;
+    width: 239px;
+    height: 64px;
     text-decoration: none;
     display: block;
     font-family: 'RoadMovie', Helvetica, serif;
 }
 
-h1 > a {
-    color:#000;
+#logo a {
+    color: #FFF;
     text-decoration: none;
-    font-size:110px;
+    font-size: 67px;
+    letter-spacing: 15px;
 }
 
 #header {
-	position: fixed;
-    height: 130px;
-    width: 100%;
+	position:fixed;
     top: 0;
     left: 0;
+    width: 100%;
     z-index: 9999;
-    transition: background 0.2s linear;
+	background-color: rgba(20, 20, 20, 0.63);
+	height: 80px;
+}
+
+.fa-sign-in, .fa-sign-out {
+    position: absolute;
+    top: 14px;
+    right: 57px;
+    font-size: 53px;
+    cursor: hand;
+    cursor: pointer;
+    -moz-transition: transform .4s linear;
+    -webkit-transition: transform .4s linear;
+    transition: transform .4s linear;
+    color: #FFF;
+}
+
+.fa-sign-in.down{
+    -ms-transform:rotate(90deg);
+    -moz-transform:rotate(90deg);
+    -webkit-transform:rotate(90deg);
+    transform:rotate(90deg);
+}
+
+.fa-user {
+    position: absolute;
+    top: 14px;
+    right: 174px;
+    font-size: 51px;
+    cursor: hand;
+    cursor: pointer;
+    color: #FFF;
 }
 
 .login-box{
-	/*position: absolute;*/
-	height: 252px;
-	width: 370px;
-	font-family: Helvetica;
-	color: #fff;
-    background: rgba(0,0,0,0.23);
-	padding: 30px 0px;
-	margin: 27px auto 0;
-	border-radius:10px;
+	display: none;
+    position: absolute;
+    top: 70px;
+    right: 30px;
+    width: 370px;
+    font-family: Helvetica;
+    color: #fff;
+    background: rgba(75,75,75,0.83);
+    padding: 30px 0px;
+    margin: 27px auto 0;
+    border-radius: 10px;
 }
+
 .login-box h1{
-	text-align: center;
+    text-align: center;
     margin: 0px 0;
     font-size: 30px;
     height: 32px;
     width: 100%;
 }
+
 .login-box input{
-	display: block;
-	width: 300px;
-	margin: 20px auto;
-	padding: 15px;
-	background: rgba(0,0,0,0.2);
-	color: #fff;
-	border: 0;
+    display: block;
+    width: 300px;
+    margin: 20px auto;
+    padding: 15px;
+    background: rgba(255,255,255,0.7);
+    color: #000;
+    border: 0;
+    font-size:18px;
 }
-.login-box input:focus,.login-box input:active,.login-box button:focus,.login-box button:active{
+
+.login-box input:focus,.login-box input:active,.login-box button:focus,.login-box button:active, .hamburger{
   outline:none;
 }
+
 .login-box button{
-  background:#2ecc71;
-  border:0;
-  color:#fff;
-  padding:10px;
-  font-size:20px;
-  width:330px;
-  margin:20px auto;
-  display:block;
-  cursor:pointer;
+    background: #2ecc71;
+    border: 0;
+    color: #fff;
+    padding: 10px;
+    font-size: 20px;
+    width: 302px;
+    margin: 20px auto;
+    display: block;
+    cursor: pointer;
 }
 .login-box button:active{
   background:#27ae60;
@@ -248,6 +286,7 @@ font-size:16px;
     margin: 15px auto 5px;
     width: 265px;
     height: 100px;
+    /*display:none;*/
 }
 
 #loggedIn p {
@@ -270,7 +309,11 @@ font-size:16px;
 
 #userPanelButton:active {`
 	background: url('../images/user_panel_pressed.png') no-repeat bottom;
-} 
+}
+
+#logoutForm {
+	display:none;
+}
 
 #logoutButton {
 	display:none;
@@ -339,35 +382,34 @@ font-size: 27px;
 
 
 #hamburger-container {
-  width: 4vw;
-  height: 4vw;
-  border: 3px solid #555;
-  border-radius: 4vw;
-  cursor: hand;
-  cursor: pointer;
-  float: left;
-  position: absolute;
-  top: 1.4vw;
-  left: 4.2vw;
-  z-index: 5;
+    position: absolute;
+    z-index: 5;
+    top: 9px;
+    left: 65px;
+    width: 55px;
+    height: 55px;
+    border: 2px solid #FFF;
+    border-radius: 67px;
+    cursor: hand;
+    cursor: pointer;
 }
 
 .hamburger {
-  padding: 1.3vw 0.85vw;
-  display: inline-block;
-  cursor: pointer;
-  transition-property: opacity, -webkit-filter;
-  transition-property: opacity, filter;
-  transition-property: opacity, filter, -webkit-filter;
-  transition-duration: 0.15s;
-  transition-timing-function: linear;
-  font: inherit;
-  color: inherit;
-  text-transform: none;
-  background-color: transparent;
-  border: 0;
-  margin: 0;
-  overflow: visible;
+    padding: 20px 12px;
+    display: inline-block;
+    cursor: pointer;
+    transition-property: opacity, -webkit-filter;
+    transition-property: opacity, filter;
+    transition-property: opacity, filter, -webkit-filter;
+    transition-duration: 0.15s;
+    transition-timing-function: linear;
+    font: inherit;
+    color: inherit;
+    text-transform: none;
+    background-color: transparent;
+    border: 0;
+    margin: 0;
+    overflow: visible;
 }
 
 .hamburger:hover {
@@ -375,29 +417,30 @@ font-size: 27px;
 }
 
 .hamburger-box {
-  width: 4vw;
-  height: 1.6vw;
-  display: inline-block;
-  position: relative;
+    height: 13px;
+    width: 39px;
+    display: inline-block;
+    position: relative;
 }
 
 .hamburger-inner {
   display: block;
   top: 50%;
   margin-top: -2px;
+
 }
 
 .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
-	width: 2.4vw;
-  	height: .2vw;
-	background-color: #555;
-	border-radius: 4px;
-	position: absolute;
-	transition-property: -webkit-transform;
-	transition-property: transform;
-	transition-property: transform, -webkit-transform;
-	transition-duration: 0.15s;
-	transition-timing-function: ease;
+	width:31px;
+	height:3px;
+    background-color: #FFF;
+    border-radius: 4px;
+    position: absolute;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+    transition-property: transform, -webkit-transform;
+    transition-duration: 0.15s;
+    transition-timing-function: ease;
 }
 
 .hamburger-inner::before, .hamburger-inner::after {
@@ -406,11 +449,11 @@ font-size: 27px;
 }
 
 .hamburger-inner::before {
-	 top: -.7vw;
+	 top: -10px;
 }
 
 .hamburger-inner::after {
-	 bottom: -.7vw;
+	 bottom: -10px;
 }
 
 .hamburger--vortex .hamburger-inner {
@@ -789,30 +832,9 @@ font-family: 'Raleway', sans-serif;
     width: 250px;
     height: 250px;
     float: left;
-    margin: 0 0 0 0;
+    margin: 13px;
     padding: 0 0 0 0;
-    margin-bottom: -2px;
-}
-
-#recipeResultsContainer > figure:nth-child(3n+1) {
-    border-left:solid 2px #000;
-    border-top:solid 2px #000;
-    border-right:none;
-}
-
-#recipeResultsContainer > figure:nth-child(3n+2) {
-	border-left:solid 2px #000;
-    border-top:solid 2px #000;
-    border-right:solid 2px #000;
-}
-
-#recipeResultsContainer > figure:nth-child(3n+3) {
-    border-top:solid 2px #000; 
-    border-right:solid 2px #000;
-}
-
-#recipeResultsContainer > figure:nth-last-child(-n+4) {
-    border-bottom:solid 2px #000;
+    border: solid 2px #000;
 }
 
 .grid figure figcaption, .grid figure figcaption > a {
@@ -922,7 +944,7 @@ figure.effect-bubba:hover p {
 
 #recipeResultsContainer {
     margin: 25px auto 10px;
-    width: 764px;
+    width: 845px;
 }
 
 
@@ -936,7 +958,7 @@ figure.effect-bubba:hover p {
 
 
 .recipeTitle {
-    margin: 23% 15% 0;
+    margin: 17% 15% 0;
     height: 50px;
     width: 70%;
     font-size: 23px;
@@ -1229,7 +1251,6 @@ figure.effect-bubba:hover p {
 	margin: 0 auto;
 	padding: 30px;
 	width: 500px;
-	height: 100%;
 	background-image: url('../images/recipeView/4925334098_788618e554.jpg');
 	border:solid;
 	border-width: 2px;
@@ -1286,7 +1307,7 @@ figure.effect-bubba:hover p {
 }
 
 #formAddIngredients input {
-	width: 145px;
+	width: 150px;
 	margin: 10px 100px 0 0;
 	float: right;
 }
@@ -1306,7 +1327,6 @@ figure.effect-bubba:hover p {
 	margin: 15px auto 15px;
 	padding: 20px;
 	width: 400px;
-	height: 100%;
 }
 
 #formConfirmedIngredients form {
@@ -1414,10 +1434,9 @@ figure.effect-bubba:hover p {
 	overflow-y: scroll;
 }
 
-#formMethod fieldset {
+/*#formMethod fieldset {
 	height: 100%;
-
-}
+}*/
 
 #recipeMethodMsg {
 	margin: 0 0 0 160px;
@@ -1428,21 +1447,18 @@ figure.effect-bubba:hover p {
 #navigationButton {
 	margin: 0 auto;
 	width: 80px;
-	height: 100%;
 	padding: 30px 0 0 0;
 }
 
 #navigationButtons {
 	margin: 0 auto;
 	width: 210px;
-	height: 100%;
 	padding: 30px 0 0 0;
 }
 
 #finalNavigationButtons {
 	margin: 0 auto;
 	width: 238px;
-	height: 100%;
 	padding: 30px 0 0 0;
 }
 
@@ -1499,7 +1515,6 @@ figure.effect-bubba:hover p {
 	margin: 0 auto;
 	padding: 30px;
 	width: 470px;
-	height: 100%;
 	background-image: url('../images/recipeView/4925334098_788618e554.jpg');
 	border:solid;
 	border-width: 2px;
@@ -1767,7 +1782,6 @@ figure.effect-bubba:hover p {
 #adminOptionButtonsContainer {
 	margin: 0 auto 20px;
 	width: 270px;
-	height: 100%;
 }
 
 #backToUserDetails {
