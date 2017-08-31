@@ -62,7 +62,7 @@ $(document).ready(function() {
 		}
 
 		if($('.logout-box').css('display') == 'block') {
-			$('.login-box').fadeOut('slow');
+			$('.logout-box').fadeOut('slow');
 			// $('.fa-sign-in').toggleClass("down"); 
 		}
 	});

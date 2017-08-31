@@ -3,13 +3,15 @@
   src: url('../fonts/roadmovie.ttf')  format('truetype'); /* Safari, Android, iOS */
 }
 
+@import url('https://fonts.googleapis.com/css?family=Cutive');
+
 head, body, ul, li, h1, p, div {
 	padding: 0 0 0 0;
 	margin: 0 0 0 0;
 }
 
 html { 
-  background: url(../images/background.jpg) no-repeat center center fixed; 
+  background: url(../images/background2.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -17,7 +19,7 @@ html {
 }
 
 body, li, ul {
-	font-family: 'Text Me One', sans-serif;
+	font-family: 'Cutive', serif;
 }
 
 #container {
@@ -37,7 +39,7 @@ h1 {
 }
 
 #logo a {
-    color: #FFF;
+    color: #000;
     text-decoration: none;
     font-size: 67px;
     letter-spacing: 15px;
@@ -49,7 +51,7 @@ h1 {
     left: 0;
     width: 100%;
     z-index: 9999;
-	background-color: rgba(20, 20, 20, 0.63);
+	/*background-color: rgba(20, 20, 20, 0.63);*/
 	height: 80px;
 }
 
@@ -63,7 +65,7 @@ h1 {
     -moz-transition: transform .4s linear;
     -webkit-transition: transform .4s linear;
     transition: transform .4s linear;
-    color: #FFF;
+    color: #000;
 }
 
 .fa-sign-in.down{
@@ -80,7 +82,7 @@ h1 {
     font-size: 51px;
     cursor: hand;
     cursor: pointer;
-    color: #FFF;
+    color: #000;
 }
 
 .login-box {
@@ -376,14 +378,14 @@ font-size: 27px;
     left: 65px;
     width: 55px;
     height: 55px;
-    border: 2px solid #FFF;
+    border: 3px solid #000;
     border-radius: 67px;
     cursor: hand;
     cursor: pointer;
 }
 
 .hamburger {
-    padding: 20px 12px;
+    padding: 21px 13px;
     display: inline-block;
     cursor: pointer;
     transition-property: opacity, -webkit-filter;
@@ -420,8 +422,8 @@ font-size: 27px;
 
 .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
 	width:31px;
-	height:3px;
-    background-color: #FFF;
+	height: 3.2px;
+    background-color: #000;
     border-radius: 4px;
     position: absolute;
     transition-property: -webkit-transform;

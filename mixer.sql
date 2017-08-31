@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.5
+-- version 3.2.4
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 15, 2013 at 12:02 AM
--- Server version: 5.1.68-cll
--- PHP Version: 5.3.17
+-- Generation Time: Sep 01, 2017 at 07:27 AM
+-- Server version: 5.1.41
+-- PHP Version: 5.3.1
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -17,7 +16,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `gavinmcg_mixer`
+-- Database: `mixer`
 --
 
 -- --------------------------------------------------------
@@ -47,7 +46,7 @@ INSERT INTO `ingredients` (`ingredientID`, `ingredientName`, `basicIngredient`) 
 (121, 'Betroot', 0),
 (8, 'Pasta', 0),
 (120, 'Feta Cheese', 0),
-(119, 'Bread', 0),
+(119, 'Bread', 1),
 (11, 'Tomato', 0),
 (118, 'Salmon', 0),
 (13, 'Flour', 1),
@@ -65,7 +64,7 @@ INSERT INTO `ingredients` (`ingredientID`, `ingredientName`, `basicIngredient`) 
 (113, 'Ground Ginger', 0),
 (112, 'Lemon Juice', 0),
 (111, 'Condensed Milk', 0),
-(110, 'Self Raising Flour', 0),
+(110, 'Self Raising Flour', 1),
 (109, 'Rice', 0),
 (108, 'Tomato Paste', 0),
 (37, 'Pasta Sauce', 0),
@@ -107,7 +106,7 @@ INSERT INTO `ingredients` (`ingredientID`, `ingredientName`, `basicIngredient`) 
 (85, 'Cornflakes', 0),
 (122, 'Salad Leaves', 0),
 (123, 'Balsamic Vinegar', 0),
-(124, 'Beans', 0),
+(124, 'Beans', 1),
 (125, 'Nutmeg', 0),
 (126, 'Chickpeas', 0),
 (127, 'Garlic', 0),
@@ -125,8 +124,8 @@ INSERT INTO `ingredients` (`ingredientID`, `ingredientName`, `basicIngredient`) 
 (140, 'Kawakawa', 0),
 (141, 'Whole Piko Piko', 0),
 (142, 'Beer', 0),
-(143, 'Lemon', 0),
-(144, 'chili', 0),
+(143, 'Lemon', 1),
+(144, 'Chili', 0),
 (145, 'Chili Beans', 0),
 (146, 'Beef', 0),
 (147, 'Onion', 0),
@@ -217,7 +216,7 @@ CREATE TABLE IF NOT EXISTS `recipe` (
   `recipeMethod` text NOT NULL,
   `recipeUploadDate` varchar(20) NOT NULL,
   PRIMARY KEY (`recipeID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=68 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=69 ;
 
 --
 -- Dumping data for table `recipe`
@@ -252,7 +251,8 @@ INSERT INTO `recipe` (`recipeID`, `userId`, `recipeName`, `recipeImage`, `recipe
 (57, 1, 'Fruit Tingle Kebabs', 'LD512ff49dd69d0Fruit Kebabs.jpg', '', 'Peel the bananas and cut into 8 pieces. Cut the watermelon into cubes as well as the kiwifruit.\r\n\r\nThread banana, mandarin, watermelon and kiwifruit onto skewers and serve immediately.\r\n\r\nOptional: Serve with flavored yoghurts as dipping sauces, such as natural Greek yoghurt mixed with a dollop of raw honey.', '2013-03-01'),
 (58, 1, 'Bang Bang Chicken', 'bangbangchicken.jpg', '', 'Place salad on a long rectangular serving plate. Grill the chicken in the hot sesame oil for 2-3 minutes each side or until tender. Remove from heat and rest to cool before laying on top of the salad. Microwave peanut butter with 2 tbs. of water stirring every 30 seconds until runny. Drizzle over chicken and salad. Optional: Can use Chinese cabbage, finely shredded and a variety of freshly chopped vegetables for extra texture and colour.', '2013-03-01'),
 (59, 1, 'Creamy Nachos', '4I-Sharchos.jpg', '', 'Recommended to add 1 to 2 tablespoons of sweet chilli sauce to the baked beans.\r\n\r\nIn a serving dish spread the cream cheese, top with the baked beans and sprinkle with cheese. Place under the grill until the cheese bubbles and is golden brown in colour. Serve warm with corn chips and Enjoy!', '2013-03-01'),
-(61, 11, 'Piko Piko Flamed Fish', 'image.jpg', 'Bush flamed fish, seasoned with kawakawa horopito and lemon.', 'Step 1: Butterfly fish with a sharp filleting knife along the spine separating the meat from the spine on both sides. Using a sharp set of kitchen scissors cut the spine at the head and tail. Place fish into a fireproof dish (preferably clay)\r\n\r\nStep2: In a mixing bowl combine Piko Piko, and watercress, drizzle a small amount of porter on this and season with horopito and kawakawa\r\n\r\nStep 3:Stuff fish with ingredients from step 2, including sliced lemon\r\n\r\nStep 4: combine salt, pepper, horopito and kawakawa in a mortar and pestle grind until fine.\r\n\r\nStep 5: layer mix from step 4 onto the outside of skin of fish, be generous as the more of this layer on the skin the crunchier it will be. Do not over season either.\r\n\r\nStep 6: fill fireproof dish with a good amount of smokey porter beer, place lid on fireproof dish and place onto of fire (use bbq or oven if cannot use fire) until fish white, tender and cooked through.\r\n\r\nStep 7:  Once done pull spine away from cooked meat leaving behind boneless fillets, serve fish on a bed of fresh watercress, with liquid left behind as drizzle sauce and piko piko as a garnish.\r\n\r\nBellissimo!', '2013-03-03');
+(61, 11, 'Piko Piko Flamed Fish', 'image.jpg', 'Bush flamed fish, seasoned with kawakawa horopito and lemon.', 'Step 1: Butterfly fish with a sharp filleting knife along the spine separating the meat from the spine on both sides. Using a sharp set of kitchen scissors cut the spine at the head and tail. Place fish into a fireproof dish (preferably clay)\r\n\r\nStep2: In a mixing bowl combine Piko Piko, and watercress, drizzle a small amount of porter on this and season with horopito and kawakawa\r\n\r\nStep 3:Stuff fish with ingredients from step 2, including sliced lemon\r\n\r\nStep 4: combine salt, pepper, horopito and kawakawa in a mortar and pestle grind until fine.\r\n\r\nStep 5: layer mix from step 4 onto the outside of skin of fish, be generous as the more of this layer on the skin the crunchier it will be. Do not over season either.\r\n\r\nStep 6: fill fireproof dish with a good amount of smokey porter beer, place lid on fireproof dish and place onto of fire (use bbq or oven if cannot use fire) until fish white, tender and cooked through.\r\n\r\nStep 7:  Once done pull spine away from cooked meat leaving behind boneless fillets, serve fish on a bed of fresh watercress, with liquid left behind as drizzle sauce and piko piko as a garnish.\r\n\r\nBellissimo!', '2013-03-03'),
+(68, 1, 'Saras pancakes', '', 'A special pancake recipe.', 'Mix thoroughly and then cook in batches in frying pan on medium heat.', '2017-08-30');
 
 -- --------------------------------------------------------
 
@@ -268,7 +268,7 @@ CREATE TABLE IF NOT EXISTS `recipeingredients` (
   `measurementID` int(11) NOT NULL,
   `extraIngredientInfo` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`recipeIngredientID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=402 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=405 ;
 
 --
 -- Dumping data for table `recipeingredients`
@@ -392,7 +392,10 @@ INSERT INTO `recipeingredients` (`recipeIngredientID`, `recipeID`, `ingredientID
 (359, 61, 142, 2, 7, 'Smokey Porter'),
 (360, 61, 143, 8, 13, 'Whole'),
 (361, 61, 4, 3, 4, 'Ground'),
-(362, 61, 53, 2, 4, 'Ground');
+(362, 61, 53, 2, 4, 'Ground'),
+(402, 68, 1, 4, 0, ''),
+(403, 68, 13, 1, 1, ''),
+(404, 68, 2, 1, 1, '');
 
 -- --------------------------------------------------------
 

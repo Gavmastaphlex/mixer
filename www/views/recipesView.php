@@ -306,6 +306,7 @@ class RecipesView extends View {
                     $html .= '<p>Try entering some ingredients!</p>';
                     $html .= '<a href="index.php?page=home&amp;mixerReset=true#ingredients">Back Home</a>'."\n";
                     $html .= '<img src="images/noFoodPic.jpg" id="noResultsImage" alt="Empty Plate Picture" />'."\n";
+                    $html .= '</div>'."\n";
 
         } else {
             /*
