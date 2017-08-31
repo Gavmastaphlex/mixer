@@ -1,7 +1,7 @@
 //Get the relevant elements
 
 		var keywordDiv = $('<div></div>').attr('id','specializedKeyword');
-		var label = $('<label>Keyword:</label>').attr('for','keyword');
+		var label = $('<label>Filter:</label>').attr('for','keyword');
 		var input = $('<input />').attr('type','text').attr('name', 'keyword').attr('id', 'keyword').attr('value', 'Enter Ingredient');
 		// Append
 		$(keywordDiv).append(label);
@@ -46,38 +46,38 @@ function suggestIngredients() {
 
 	//tap into the onreadystate paramter
 
-					xhr.onreadystatechange = function() {
-						if(xhr.readyState == 4 && xhr.status == 200) {
-							//output suggestions
-							//ingredientSuggestions.innerHTML = xhr.responseText;
+		xhr.onreadystatechange = function() {
+			if(xhr.readyState == 4 && xhr.status == 200) {
+				//output suggestions
+				//ingredientSuggestions.innerHTML = xhr.responseText;
 
 
-							if(xhr.responseText != false) {
+				if(xhr.responseText != false) {
 
-								var suggestions = JSON.parse(xhr.responseText);
+					var suggestions = JSON.parse(xhr.responseText);
 
-								$('#specializedList').html('');
-								$.each(suggestions, function(i, item) {
-										// Create elements
-										var li = $('<li></li>');
-										var form = $('<form></form>').attr('method','post').attr('action', 'index.php?page=home#ingredients');
-										var input1 = $('<input />').attr('type','hidden').attr('name', 'selectedIngredientID').attr('value', item.id);
-										var input2 = $('<input />').attr('type','submit').attr('name', 'selectedIngredient').attr('value', item.name).addClass('homeIngredients');
-										// Append
-										$(form).append(input1);
-										$(form).append(input2);
-										$(li).append(form).click(addIngredient);
-										$('#specializedList').append(li);
-								});
-								//get the divs
+					$('#specializedList').html('');
+					$.each(suggestions, function(i, item) {
+							// Create elements
+							var li = $('<li></li>');
+							var form = $('<form></form>').attr('method','post').attr('action', 'index.php?page=home#ingredients');
+							var input1 = $('<input />').attr('type','hidden').attr('name', 'selectedIngredientID').attr('value', item.id);
+							var input2 = $('<input />').attr('type','submit').attr('name', 'selectedIngredient').attr('value', item.name).addClass('homeIngredients');
+							// Append
+							$(form).append(input1);
+							$(form).append(input2);
+							$(li).append(form).click(addIngredient);
+							$('#specializedList').append(li);
+					});
+					//get the divs
 
-							} else {
-								$('#specializedList').html('No suggestions');
-							}
-
-
-						}
+				} else {
+					$('#specializedList').html('No suggestions');
 				}
+
+
+			}
+	}
 	
 }
 

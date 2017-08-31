@@ -313,6 +313,33 @@ class Dbase {
         return false;
         }
 
+
+        public function getAllIngredients() {
+
+            $qry = "SELECT ingredientID, ingredientName, basicIngredient FROM ingredients ORDER BY ingredientName";
+
+            $rs = $this -> db -> query($qry);
+
+            if($rs) {
+
+                if($rs -> num_rows > 0) {
+
+                    $basicIngredients = array();
+
+                    while($row = $rs -> fetch_assoc()) {
+                        $basicIngredients[] = $row;
+                    }
+
+                    return $basicIngredients;
+                } else {
+                    echo 'No ingredients found';
+                }
+            } else {
+                echo 'Error Executing getBasicIngredients Query';
+            }
+            return false;
+        }
+
     
 
     public function getBasicIngredients() {

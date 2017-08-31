@@ -4,6 +4,8 @@ class HomeView extends View {
         
     protected function displayContent() {
 
+    	session_start();
+
     	$html = '';
 
     	/*
@@ -25,25 +27,15 @@ class HomeView extends View {
 
     	}
 
-    	if($_POST['removeFinalized']) {
-		            $id = $_POST['selectedIngredientID'];
-		            unset($_SESSION['finalized'][$id]);
-		        }
 
-		if($_POST['selectedIngredient']) {
+		if($_POST['checkSession']) {
 
-			$id = $_POST['selectedIngredientID'];
-
-		if(!isset($_SESSION['finalized'][$id])) {
-
-				$_SESSION['finalized'][$id] = array(
-                'ingredientID' => $id,
-                'ingredientName' => $_POST['selectedIngredient']
-                );
-		            
-		    }
+			echo '<pre>';
+			print_r($_SESSION);
+			echo '</pre>'; 
 			
 		}
+
 
 		if($_GET['mixerReset']) {
 			unset($_SESSION['finalized']);
@@ -57,50 +49,39 @@ class HomeView extends View {
 
         $html .= '<!--h2>'.$this -> pageInfo['pageHeading'].'</h2-->'."\n";
 
-        $html .= '<h3>The Dynamic Recipe Generator</h3>'."\n";
+        $html .= '<!--form method="post" action="index.php?page=home#ingredients" enctype="multipart/form-data">'."\n";
+        $html .= '<input type="hidden" name="checkSession" value="checkSession" />'."\n";
+        $html .= '<input type="submit" class="homeIngredients" name="submit"" />'."\n";
+        $html .= '</form-->'."\n";
+
+
+        $html .= '<!--h3>The Dynamic Recipe Generator</h3-->'."\n";
 		$html .= '<div id="ingredientBoxes">'."\n";
 		$html .= '<div id="ingredients">'."\n";
-		$html .= '<div id="basicTypes" class="ingredientTypes">'."\n";
-		$html .= '<h4><em>Basic Ingredients</em></h4>'."\n";
-		$html .= '<div id="basicContainer" class="ingredientsContainer">'."\n";
-		$html .= '<ul>'."\n";
-
-
-		$this -> basicIngredients = $this -> model -> getBasicIngredients();
-        
-        if(is_array($this -> basicIngredients)) {
-            $html .= $this -> displayBasicIngredients();
-        } else {
-            $html .= '<p>No basic ingredients available.</p>';
-        }
-
-		$html .= '</ul>'."\n";
-		$html .= '</div>'."\n";
-		$html .= '</div>'."\n";
 		$html .= '<div id="specializedTypes" class="ingredientTypes">'."\n";
-		$html .= '<h4><em>Specialized Ingredients</em></h4>'."\n";
+		$html .= '<h4><em>Ingredients</em></h4>'."\n";
 
-		$html .= '<noscript>'."\n";
+		$html .= '<label for="filter">Filter:</label>'."\n";
+		$html .= '<input type="text" name="filter" id="filter" placeholder="Enter ingredient">'."\n";
+
+		$html .= '<label for="basic">Basic ingredients:</label>'."\n";
+		$html .= '<input type="checkbox" name="basic" id="basic">'."\n";
 
 		$html .= '<div id="noscriptSpecializedContainer" class="noscriptIngredientsContainer">'."\n";
 		$html .= '<ul>'."\n";
 		
-		
-
-		$this -> specializedIngredients = $this -> model -> getSpecializedIngredients();
+		$this -> ingredients = $this -> model -> getAllIngredients();
         
-        if(is_array($this -> specializedIngredients)) {
-            $html .= $this -> displaySpecializedIngredients();
+        if(is_array($this -> ingredients)) {
+            $html .= $this -> displayAllIngredients();
         } else {
-            $html .= '<p>No specialized ingredients available.</p>';
+            $html .= '<p>No ingredients available.</p>';
         }
-
-        
 
 		$html .= '</ul>'."\n";
 		$html .= '</div>'."\n";
 
-		$html .= '</noscript>'."\n";
+		// $html .= '</noscript>'."\n";
 
 		$html .= '</div>'."\n";
 		$html .= '<div class="clearDiv"></div>'."\n";
@@ -113,8 +94,8 @@ class HomeView extends View {
 		$html .= '<ul>'."\n";
 
 		if(isset($_SESSION['finalized'])) {
-		            $html .= $this -> displayfinalizedIngredients();
-		        }
+            $html .= $this -> displayfinalizedIngredients();
+        }
 
         $html .= '</ul>'."\n";
 		$html .= '</div>'."\n";
@@ -123,9 +104,27 @@ class HomeView extends View {
 		$html .= '</form>'."\n";
 		$html .= '</div>'."\n";
 		$html .= '</div>'."\n";
-        $html .= '<script type="text/javascript" src="js/ingredientAutocomplete.js"></script>'."\n";
+        $html .= '<!--script type="text/javascript" src="js/ingredientAutocomplete.js"></script-->'."\n";
+        $html .= '<script type="text/javascript" src="js/mix-it-up.js"></script>'."\n";
                 
         return $html;        
+    }
+
+
+    private function displayAllIngredients() {
+        
+	        foreach($this -> ingredients as $ingredient) {
+	        	$html .= '<li id="ingredient-'.$ingredient['ingredientID'].'" class="ingredient';
+
+	        	if ($ingredient['basicIngredient'] == 1) {
+	        		$html .= ' basic';
+	        	}
+
+	        	$html .= '">'.$ingredient['ingredientName'].'</li>'."\n";
+	        }   
+
+        return $html;       
+        
     }
 
     private function displayBasicIngredients() {
@@ -160,34 +159,36 @@ class HomeView extends View {
 
     private function displayFinalizedIngredients() {
 
-        	foreach($_SESSION['finalized'] as $finalizedIngredient) {
-	        	$html .= '<li>'."\n";
+    		foreach($_SESSION['finalized'] as $finalizedIngredient) {
+	        	$html .= '<li id="ingredient-'.$finalizedIngredient['ingredientID'].'" class="ingredient">'.$finalizedIngredient['ingredientName'].'</li>'."\n";
+	        }
 
-	            $html .= '<form method="post" action="index.php?page=home#ingredients" enctype="multipart/form-data">'."\n";
-	            $html .= '<input type="hidden" name="selectedIngredientID" value="'.$finalizedIngredient['ingredientID'].'" />'."\n";
 
-	            if($_GET['previousSearch'] == true){
-	            	$html .= '<input type="submit" class="homeIngredients" name="selectedIngredient" value="'.$finalizedIngredient['ingredientName'].'" />'."\n";
-	            } else {
-	            	$html .= '<input type="submit" class="homeIngredients" name="removeFinalized" value="'.$finalizedIngredient['ingredientName'].'" />'."\n";
-	            }
+        	// foreach($_SESSION['finalized'] as $finalizedIngredient) {
+	        // 	$html .= '<li>'."\n";
+
+	        //     $html .= '<form method="post" action="index.php?page=home#ingredients" enctype="multipart/form-data">'."\n";
+	        //     $html .= '<input type="hidden" name="selectedIngredientID" value="'.$finalizedIngredient['ingredientID'].'" />'."\n";
+
+	        //     if($_GET['previousSearch'] == true){
+	        //     	$html .= '<input type="submit" class="homeIngredients" name="selectedIngredient" value="'.$finalizedIngredient['ingredientName'].'" />'."\n";
+	        //     } else {
+	        //     	$html .= '<input type="submit" class="homeIngredients" name="removeFinalized" value="'.$finalizedIngredient['ingredientName'].'" />'."\n";
+	        //     }
 
 	            
-	            $html .= '</form>'."\n";
+	        //     $html .= '</form>'."\n";
 
-	            $html .= '</li>'."\n";
-	        }
+	        //     $html .= '</li>'."\n";
+	        // }
+
 
 	        if($_GET['previousSearch'] == true) {
 	        	
 	        	unset($_SESSION['mixItUp']);
 	        	unset($_SESSION['incomplete']);
 	        	unset($_SESSION['incompleteIngredients']);
-				/*
-				unset($_SESSION['finalized']);
-				unset($_SESSION['allRecipes']);
-	            unset($_SESSION['lastPage']);
-	            unset($_SESSION['pageNum']);*/
+
 	        }
 
 	        

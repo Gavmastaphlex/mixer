@@ -1,4 +1,7 @@
 $(document).ready(function() {
+
+	$( document ).tooltip();
+	
 	$('#hamburger-container').click(function() {
 		$('#perspective').toggleClass("modalview animate"); 
 		if($('.hamburger').hasClass( "is-active" )) {
@@ -16,20 +19,34 @@ $(document).ready(function() {
 	})
 
 	$('.fa-sign-in').click(function(){
-		$(this).toggleClass("down"); 
+		// $(this).toggleClass("down"); 
 		if($('.login-box').css('display') != 'block') {
-			$('.login-box').slideDown('slow');
+			$('.login-box').fadeIn('slow');
 			setTimeout(function(){
 			  $(".login-box input:first").focus();
 			}, 500);
 		} else {
-			$('.login-box').slideUp('slow');
+			$('.login-box').fadeOut('slow');
 		}
 		
 	})
 
 	$('.fa-sign-out').click(function(){
+		$(this).toggleClass("down"); 
+		if($('.logout-box').css('display') != 'block') {
+			$('.logout-box').fadeIn('slow');
+		} else {
+			$('.logout-box').fadeOut('slow');
+		}
+		
+	})
+
+	$('#logoutYes').click(function(){
 		$('#logoutButton').click();
+	})
+
+	$('#logoutNo').click(function(){
+		$('.logout-box').fadeOut('slow');
 	})
 
 
@@ -40,8 +57,13 @@ $(document).ready(function() {
 
 	$(document).click(function() {
 		if($('.login-box').css('display') == 'block') {
-			$('.login-box').slideUp('slow');
-			$('.fa-sign-in').toggleClass("down"); 
+			$('.login-box').fadeOut('slow');
+			// $('.fa-sign-in').toggleClass("down"); 
+		}
+
+		if($('.logout-box').css('display') == 'block') {
+			$('.login-box').fadeOut('slow');
+			// $('.fa-sign-in').toggleClass("down"); 
 		}
 	});
 

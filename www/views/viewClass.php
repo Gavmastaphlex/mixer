@@ -43,11 +43,13 @@ abstract class View {
         $html .= '<title>'.$this -> pageInfo['pageTitle'].'</title>'."\n";
         $html .= '<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />'."\n";
         $html .= '<link rel="stylesheet" type="text/css" href="css/menu.css" />'."\n";
+        $html .= '<link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css" />'."\n";
         $html .= '<link rel="stylesheet" type="text/css" href="css/styles.css" />'."\n";
         $html .= '<link href="http://fonts.googleapis.com/css?family=Text+Me+One|Raleway:400,200" rel="stylesheet" type="text/css" />'."\n";
         $html .= '<meta name="description" content="'.$this -> pageInfo['pageDescription'].'" />'."\n";
         $html .= '<meta name="keywords" content="'.$this -> pageInfo['pageKeywords'].'" />'."\n";
         $html .= '<script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>'."\n";
+        $html .= '<script type="text/javascript" src="js/jquery-ui.min.js"></script>'."\n";
         $html .= '<script src="js/modernizr.custom.25376.js"></script>'."\n";
         $html .= '</head>'."\n";
         $html .= '<body>'."\n";
@@ -64,15 +66,22 @@ abstract class View {
 
         if($_SESSION['userName'] && !$_POST['deleteProfile']) {
 
-        $html .= '<a href="index.php?page=userPanel"><i class="fa fa-user" aria-hidden="true"></i></a>'."\n";
-        $html .= '<i class="fa fa-sign-out" aria-hidden="true"></i>'."\n";
+        $html .= '<a href="index.php?page=userPanel"><i class="fa fa-user" aria-hidden="true" title="User Panel"></i></a>'."\n";
+        $html .= '<i class="fa fa-sign-out" aria-hidden="true" title="Logout"></i>'."\n";
+        $html .= '<div class="logout-box">'."\n";
+        $html .= '<p>Are you sure you want to logout?</p>'."\n";
+        $html .= '<div id="logoutButtons">'."\n";
+        $html .= '<button id="logoutYes">Yes</button>'."\n";
+        $html .= '<button id="logoutNo">No</button>'."\n";
+        $html .= '</div>'."\n";
         $html .= '<form id="logoutForm" method="post" action="index.php">'."\n";
         $html .= '<input type="submit" name="logoutButton" id="logoutButton" class="loginBtn" value="Logout" />'."\n";
         $html .= '</form>'."\n";
+        $html .= '</div>'."\n";
 
         } else {
 
-        $html .= '<i class="fa fa-sign-in" aria-hidden="true"></i>'."\n";
+        $html .= '<i class="fa fa-sign-in" aria-hidden="true" title="Login"></i>'."\n";
         $html .= '<div class="login-box">'."\n";
         $html .= '<h1>Login</h1>'."\n";
         $html .= '<form method="post" action="index.php">';
