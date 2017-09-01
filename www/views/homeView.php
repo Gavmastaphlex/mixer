@@ -189,9 +189,11 @@ class HomeView extends View {
 	        	unset($_SESSION['incomplete']);
 	        	unset($_SESSION['incompleteIngredients']);
 
-	        }
+	        	foreach($_SESSION['finalized'] as $finalizedIngredient) {
+		        	$html .= '<li id="ingredient-'.$finalizedIngredient['ingredientID'].'" class="ingredient">'.$finalizedIngredient['ingredientName'].'</li>'."\n";
+		        }
 
-	        
+	        }
 
 
         return $html;       

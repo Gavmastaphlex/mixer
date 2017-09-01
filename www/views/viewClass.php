@@ -55,7 +55,8 @@ abstract class View {
         $html .= '<body>'."\n";
         $html .= '<div id="header">'."\n";
         $html .= '<div id="hamburger-container">'."\n";
-        $html .= '<button id="showMenu" class="hamburger hamburger--vortex" type="button">'."\n";
+        // $html .= '<div id="showMenu"></div>'."\n";
+        $html .= '<button class="hamburger hamburger--vortex" type="button">'."\n";
         $html .= '<span class="hamburger-box">'."\n";
         $html .= '<span class="hamburger-inner"></span>'."\n";
         $html .= '</span>'."\n";

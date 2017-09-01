@@ -5,19 +5,22 @@ $(document).ready(function(){
 	$('#noscriptSpecializedContainer li').click(function(){
 		if(!$(this).hasClass('selected')) {
 			$(this).clone().appendTo( "#finalizedContainer ul" );
-			$(this).addClass('selected');
+			// $(this).addClass('selected');
 		}
 
 	    var ingredientName = $(this).html();
 	    var ingredientID = $(this).attr('id').split('-')
 
-
 	    $.post("js/routes/mix-it-up.php", { "ingredientName": ingredientName, "ingredientID": ingredientID[1] } );
+
+	    $(this).remove();
 
 	})
 
 
 	$("#finalizedContainer").on("click", ".ingredient", function(){
+
+		$(this).clone().appendTo( "#noscriptSpecializedContainer ul" );
 
 	    var ingredientID = $(this).attr('id').split('-');
 	    

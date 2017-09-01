@@ -78,7 +78,7 @@ h1 {
 .fa-user {
     position: absolute;
     top: 14px;
-    right: 174px;
+    right: 154px;
     font-size: 51px;
     cursor: hand;
     cursor: pointer;
@@ -370,6 +370,14 @@ font-size: 27px;
 /* ----------------------------------------------------------------- */
 /* ----------------------------------------------------------------- */
 
+#showMenu {
+	display: none;
+}
+
+.hamburger-inner.whiteHamburger, .hamburger-inner.whiteHamburger:before, .hamburger-inner.whiteHamburger:after {
+	background-color:#FFF;
+}
+
 
 #hamburger-container {
     position: absolute;
@@ -434,7 +442,7 @@ font-size: 27px;
 }
 
 .hamburger-inner::before, .hamburger-inner::after {
-	content: "";
+	content: attr(hamburger-element);
 	display: block;
 }
 
@@ -591,6 +599,9 @@ h4 {
     font-size: 15px;
     cursor: hand;
     cursor: pointer;
+    -webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
 }
 
 
@@ -673,6 +684,9 @@ h4 {
 	height: 30px;
 	cursor:hand;
 	cursor:pointer;
+    -webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
 }
 
 #finalizedContainer {
