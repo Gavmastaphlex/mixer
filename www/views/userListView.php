@@ -58,8 +58,8 @@ class UserListView extends View {
                             $html .= '<div id="deleteUserBox">'."\n";
                             $html .= '<form method="post" action="index.php?page=userPanel&amp;id='.$_GET['id'].'" enctype="multipart/form-data">'."\n";
                             $html .= '<p><strong>Are you sure you want to delete this user?</strong></p>'."\n";
-                            $html .= '<a href="index.php?page=userList&amp;id='.$_GET['id'].'" id="cancelDeleteUser">Cancel</a>'."\n";
-                            $html .= '<input type="submit" name="deleteUser" value="Delete User" id="confirmDeleteUser" />'."\n";
+                            $html .= '<a href="index.php?page=userList&amp;id='.$_GET['id'].'" id="cancelDeleteUser" class="green-button">Cancel</a>'."\n";
+                            $html .= '<input type="submit" name="deleteUser" value="Delete User" id="confirmDeleteUser" class="red-button" />'."\n";
                             $html .= '</div>'."\n";
                         }
 
@@ -75,9 +75,9 @@ class UserListView extends View {
 					$html .= '</ul>'."\n";
 					$html .= '<div id="adminOptionButtonsContainer">'."\n";
 					$html .= '<form method="post" action="index.php?page=userList&amp;id='.$userName.'">'."\n";
-					$html .= '<a href="index.php?page=userList" id="backToUserList" class="adminOptionButtons">Back to User List</a>'."\n";
-					$html .= '<a href="index.php?page=recipes&amp;browseUserRecipes='.$userID.'" id="usersRecipes" class="adminOptionButtons">Users Recipes</a>'."\n";
-			        $html .= '<input type="submit" name="deleteUserButton" id="deleteUserBtn" value="Delete User" class="adminOptionButtons" />'."\n";
+					$html .= '<a href="index.php?page=userList" id="backToUserList" class="adminOptionButtons blue-button">Back to User List</a>'."\n";
+					$html .= '<a href="index.php?page=recipes&amp;browseUserRecipes='.$userID.'" id="usersRecipes" class="adminOptionButtons green-button">Users Recipes</a>'."\n";
+			        $html .= '<input type="submit" name="deleteUserButton" id="deleteUserBtn" value="Delete User" class="adminOptionButtons red-button" />'."\n";
 					$html .= '</form>'."\n";
 
 					$html .= '</div>'."\n";

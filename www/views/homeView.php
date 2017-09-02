@@ -8,6 +8,11 @@ class HomeView extends View {
 
     	$html = '';
 
+    	$html .= '<form method="post" action="index.php?page=home#ingredients" >'."\n";
+		$html .= '<input type="submit" name="checkSession" id="checkSession" value="Check Session" class="blue-button single-button" />'."\n";
+		$html .= '</form>'."\n";
+
+
     	/*
 		if a user presses the Delete Profile button from the User Panel, then
 		the delete user function is being called from the database to wipe all
@@ -27,15 +32,13 @@ class HomeView extends View {
 
     	}
 
-
-		if($_POST['checkSession']) {
-
-			echo '<pre>';
+    	if($_POST['checkSession']) {
+    		echo '<pre>';
 			print_r($_SESSION);
 			echo '</pre>'; 
-			
-		}
+    	}
 
+		
 
 		if($_GET['mixerReset']) {
 			unset($_SESSION['finalized']);
@@ -64,7 +67,7 @@ class HomeView extends View {
 		$html .= '<label for="filter">Filter:</label>'."\n";
 		$html .= '<input type="text" name="filter" id="filter" placeholder="Enter ingredient">'."\n";
 
-		$html .= '<label for="basic">Basic ingredients:</label>'."\n";
+		$html .= '<label id="basic-label" for="basic">Basic ingredients:</label>'."\n";
 		$html .= '<input type="checkbox" name="basic" id="basic">'."\n";
 
 		$html .= '<div id="noscriptSpecializedContainer" class="noscriptIngredientsContainer">'."\n";
@@ -100,12 +103,14 @@ class HomeView extends View {
         $html .= '</ul>'."\n";
 		$html .= '</div>'."\n";
 		$html .= '<form method="post" action="index.php?page=recipes#content" >'."\n";
-		$html .= '<input type="submit" name="mixItUp" id="mixItUp" value="Mix It Up!" />'."\n";
+		$html .= '<input type="submit" name="mixItUp" id="mixItUp" value="Mix It Up!" class="red-button single-button" />'."\n";
 		$html .= '</form>'."\n";
 		$html .= '</div>'."\n";
 		$html .= '</div>'."\n";
         $html .= '<!--script type="text/javascript" src="js/ingredientAutocomplete.js"></script-->'."\n";
+        
         $html .= '<script type="text/javascript" src="js/mix-it-up.js"></script>'."\n";
+        $html .= '<script type="text/javascript" src="js/recipesMatched.js"></script>'."\n";
                 
         return $html;        
     }
@@ -114,13 +119,22 @@ class HomeView extends View {
     private function displayAllIngredients() {
         
 	        foreach($this -> ingredients as $ingredient) {
-	        	$html .= '<li id="ingredient-'.$ingredient['ingredientID'].'" class="ingredient';
 
-	        	if ($ingredient['basicIngredient'] == 1) {
-	        		$html .= ' basic';
-	        	}
+	        	// if($_GET['previousSearch'] == true) {
 
-	        	$html .= '">'.$ingredient['ingredientName'].'</li>'."\n";
+		        	if($ingredient['ingredientID'] != $_SESSION['finalized'][$ingredient['ingredientID']]['ingredientID']) {
+
+				    	$html .= '<li id="ingredient-'.$ingredient['ingredientID'].'" class="ingredient';
+
+			        	if ($ingredient['basicIngredient'] == 1) {
+			        		$html .= ' basic';
+			        	}
+
+			        	$html .= '">'.$ingredient['ingredientName'].'</li>'."\n";
+
+		        	}
+
+	        	// }
 	        }   
 
         return $html;       
@@ -188,10 +202,6 @@ class HomeView extends View {
 	        	unset($_SESSION['mixItUp']);
 	        	unset($_SESSION['incomplete']);
 	        	unset($_SESSION['incompleteIngredients']);
-
-	        	foreach($_SESSION['finalized'] as $finalizedIngredient) {
-		        	$html .= '<li id="ingredient-'.$finalizedIngredient['ingredientID'].'" class="ingredient">'.$finalizedIngredient['ingredientName'].'</li>'."\n";
-		        }
 
 	        }
 

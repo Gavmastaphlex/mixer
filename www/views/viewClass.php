@@ -44,7 +44,9 @@ abstract class View {
         $html .= '<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />'."\n";
         $html .= '<link rel="stylesheet" type="text/css" href="css/menu.css" />'."\n";
         $html .= '<link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css" />'."\n";
+        $html .= '<link rel="stylesheet" type="text/css" href="css/buttons.css" />'."\n";
         $html .= '<link rel="stylesheet" type="text/css" href="css/styles.css" />'."\n";
+        $html .= '<link rel="stylesheet" type="text/css" href="css/form.css" />'."\n";
         $html .= '<link href="http://fonts.googleapis.com/css?family=Text+Me+One|Raleway:400,200" rel="stylesheet" type="text/css" />'."\n";
         $html .= '<meta name="description" content="'.$this -> pageInfo['pageDescription'].'" />'."\n";
         $html .= '<meta name="keywords" content="'.$this -> pageInfo['pageKeywords'].'" />'."\n";
@@ -54,7 +56,7 @@ abstract class View {
         $html .= '</head>'."\n";
         $html .= '<body>'."\n";
         $html .= '<div id="header">'."\n";
-        $html .= '<div id="hamburger-container">'."\n";
+        $html .= '<div id="hamburger-container" title="Menu">'."\n";
         // $html .= '<div id="showMenu"></div>'."\n";
         $html .= '<button class="hamburger hamburger--vortex" type="button">'."\n";
         $html .= '<span class="hamburger-box">'."\n";
@@ -62,7 +64,7 @@ abstract class View {
         $html .= '</span>'."\n";
         $html .= '</button>'."\n";
         $html .= '</div> <!-- eo#hamburger-container -->'."\n";
-        $html .= '<h1 id="logo"><a href="index.php?page=home">Mixer</a></h1>'."\n";
+        $html .= '<h1 id="logo" title="Mixer Home"><a href="index.php?page=home">Mixer</a></h1>'."\n";
         
 
         if($_SESSION['userName'] && !$_POST['deleteProfile']) {
@@ -75,7 +77,7 @@ abstract class View {
         $html .= '<button id="logoutYes">Yes</button>'."\n";
         $html .= '<button id="logoutNo">No</button>'."\n";
         $html .= '</div>'."\n";
-        $html .= '<form id="logoutForm" method="post" action="index.php">'."\n";
+        $html .= '<form id="logoutForm" method="post">'."\n";
         $html .= '<input type="submit" name="logoutButton" id="logoutButton" class="loginBtn" value="Logout" />'."\n";
         $html .= '</form>'."\n";
         $html .= '</div>'."\n";

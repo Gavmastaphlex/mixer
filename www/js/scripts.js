@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
 	$( document ).tooltip({
-		// position: { my: "left+15 center", at: "center bottom" }
 		position: { my: "center bottom+42", at: "center bottom" }
 	});
 
@@ -36,6 +35,12 @@ $(document).ready(function() {
 
 	});
 
+	$('#header').hover(function(){
+		activateHeader();
+	}, function(){
+		deactivateHeader();
+	});
+
 
 	$('.login-box button').click(function(event) {
 		event.preventDefault();
@@ -44,14 +49,15 @@ $(document).ready(function() {
 	})
 
 	$('.fa-sign-in').click(function(){
-		// $(this).toggleClass("down"); 
 		if($('.login-box').css('display') != 'block') {
 			$('.login-box').fadeIn();
+			$('#header').addClass('login-logout-box-active');
 			setTimeout(function(){
 			  $(".login-box input:first").focus();
 			}, 500);
 		} else {
 			$('.login-box').fadeOut();
+			$('#header').removeClass('login-logout-box-active');
 		}
 		
 	})
@@ -60,8 +66,10 @@ $(document).ready(function() {
 		$(this).toggleClass("down"); 
 		if($('.logout-box').css('display') != 'block') {
 			$('.logout-box').fadeIn();
+			$('#header').addClass('login-logout-box-active');
 		} else {
 			$('.logout-box').fadeOut();
+			$('#header').removeClass('login-logout-box-active');
 		}
 		
 	})
@@ -90,7 +98,12 @@ $(document).ready(function() {
 			$('.logout-box').fadeOut('slow');
 			// $('.fa-sign-in').toggleClass("down"); 
 		}
+		$('#header').removeClass('login-logout-box-active');
 
+		if ($(window).scrollTop() < 12) {
+    		deactivateHeader();
+    	}
+		
 		$('.ui-tooltip').hide();
 
 	});
@@ -127,14 +140,17 @@ function activateHeader() {
 
 function deactivateHeader() {
 
-	$('#header').stop().animate({backgroundColor: 'transparent'}, 200);
+	if(!$('#header').hasClass('login-logout-box-active') && $(window).scrollTop() < 12) {
 
-	setTimeout(function(){
-		$('#logo a').css({color: '#000'});
-		$('#header .fa').css({color: '#000'});
-		$('#hamburger-container').css({borderColor: '#000'});
-		$('.hamburger-inner').removeClass('whiteHamburger');
-	}, 100);
+		$('#header').stop().animate({backgroundColor: 'transparent'}, 200);
 
+		setTimeout(function(){
+			$('#logo a').css({color: '#000'});
+			$('#header .fa').css({color: '#000'});
+			$('#hamburger-container').css({borderColor: '#000'});
+			$('.hamburger-inner').removeClass('whiteHamburger');
+		}, 100);
+		
+	}
 
 }

@@ -51,38 +51,35 @@ h1 {
     left: 0;
     width: 100%;
     z-index: 9999;
-	/*background-color: rgba(20, 20, 20, 0.63);*/
 	height: 80px;
+	/*transition-property: background-color, -webkit-filter;
+    transition-property: background-color, filter;
+    transition-property: background-color, filter, -webkit-filter;
+    transition-duration: 0.15s;
+    transition-timing-function: linear;*/
+}
+
+/*#header:hover {
+	background-color: rgba(20, 20, 20, 0.63);
+}*/
+
+#header .fa {
+	position: absolute;
+	top: 14px;
+	cursor: hand;
+    cursor: pointer;
+    color: #000;
 }
 
 .fa-sign-in, .fa-sign-out {
-    position: absolute;
-    top: 14px;
     right: 57px;
     font-size: 53px;
-    cursor: hand;
-    cursor: pointer;
-    -moz-transition: transform .4s linear;
-    -webkit-transition: transform .4s linear;
-    transition: transform .4s linear;
-    color: #000;
 }
 
-.fa-sign-in.down{
-    -ms-transform:rotate(90deg);
-    -moz-transform:rotate(90deg);
-    -webkit-transform:rotate(90deg);
-    transform:rotate(90deg);
-}
 
 .fa-user {
-    position: absolute;
-    top: 14px;
     right: 154px;
     font-size: 51px;
-    cursor: hand;
-    cursor: pointer;
-    color: #000;
 }
 
 .login-box {
@@ -531,7 +528,7 @@ h4 {
 
 #ingredientBoxes {
 	margin: 0 auto;
-	width: 980px;
+	width: 1010px;
 	height: 455px;
 }
 
@@ -604,12 +601,6 @@ h4 {
 	-ms-user-select: none; /* IE10+ */
 }
 
-
-#basicContainer {
-	width: 150px;
-	height: 320px;
-}
-
 #specializedContainer  {
 	width: 340px;
     height: 280px;
@@ -636,6 +627,9 @@ h4 {
 	margin: 0 10px 0 0;
 }
 
+#basic-label {
+	margin-left: 20px;
+}
 
 .clearDiv {
 	clear: both;
@@ -643,7 +637,7 @@ h4 {
 
 #finalized {
 	margin: 0 15px;
-	width: 460px;
+	width: 480px;
 	height: 433px;
 	float: left;
 	border: solid;
@@ -665,9 +659,9 @@ h4 {
 }
 
 #finalizedContainer {
-    margin: 10px 0 0 32px;
+    margin: 10px 0 0 30px;
     padding-top: 10px;
-    width: 391px;
+    width: 411px;
     height: 270px;
     background-color: rgba(255, 255, 255, 0.5);
     border: solid;
@@ -683,7 +677,7 @@ h4 {
 	list-style: none;
 	height: 30px;
 	cursor:hand;
-	cursor:pointer;
+	cursor:pointer;	
     -webkit-user-select: none; /* Chrome/Safari */        
 	-moz-user-select: none; /* Firefox */
 	-ms-user-select: none; /* IE10+ */
@@ -693,22 +687,7 @@ h4 {
 	overflow-y: auto;
 }
 
-#mixItUp {
-	margin: 10px auto 0;
-	width: 121px;
-	height: 32px;
-	background-color: transparent;
-	border: none;
-	background-image: url('../images/index/mix_button_unpressed.png');
-	display: block;
-	text-indent: -9999em;
-	overflow: hidden;
-	cursor: pointer;
-}
 
-#mixItUp:active {
-	background: url('../images/index/mix_button_pressed.png') no-repeat bottom;
-}
 
 .homeIngredients {
 background-color: transparent;
@@ -775,41 +754,15 @@ font-family: 'Raleway', sans-serif;
 	height: 50px;
 }
 
-#newSearchBtn {
-	margin: 10px 14px;
-	width: 167px;
-	height: 32px;
-	background-color: transparent;
-	border: none;
-	background-image: url('../images/recipeResults/New_Search_Unpressed.png');
-	display: block;
-	text-indent: -9999em;
-	overflow: hidden;
-	cursor: pointer;
-	float: left;
+.search-button {
+	width:120px;
+	text-align:center;
+	margin:0px 10px;
 }
 
-#newSearchBtn:active {
-	background: url('../images/recipeResults/New_Search_Pressed.png') no-repeat bottom;	
-	}
 
-#previousSearchBtn {
-	margin: 10px 17px 0 9px;
-	width: 167px;
-	height: 32px;
-	background-color: transparent;
-	border: none;
-	background-image: url('../images/recipeResults/Previous_Search_Unpressed.png');
-	display: block;
-	text-indent: -9999em;
-	overflow: hidden;
-	cursor: pointer;
-	float: left;
-}
 
-#previousSearchBtn:active {
-	background: url('../images/recipeResults/Previous_Search_Pressed.png') no-repeat bottom;	
-	}
+
 
 #noRecipesImage {
 	display: block;
@@ -880,7 +833,8 @@ figure.effect-bubba:hover img {
 }
 
 figure.effect-bubba h2 {
-	opacity: 0;
+	opacity: 1;
+	text-shadow: 1px 1px rgba(255, 255, 255, 0.5);
 	transition-property: opacity, -webkit-filter;
 	  transition-property: opacity, filter;
 	  transition-property: opacity, filter, -webkit-filter;
@@ -891,6 +845,7 @@ figure.effect-bubba h2 {
 figure.effect-bubba:hover h2 {
 	color:#FFF;
 	opacity: 1;
+	text-shadow: none;
 }
 
 figure.effect-bubba figcaption::before,
@@ -1027,103 +982,19 @@ figure.effect-bubba:hover p {
 
 }
 
-#confirmDeleteRecipe {
-	float: left;
-	margin: 15px 15px 0;
-	width: 150px;
-	height: 30px;
-	background-color: transparent;
-	border: none;
-	background-image: url('../images/recipeView/Delete_Recipe_Unpressed.png');
-	display: block;
-	text-indent: -9999em;
-	overflow: hidden;
-	cursor: pointer;
-}
-
-#confirmDeleteRecipe:active {
-	background-image: url('../images/recipeView/Delete_Recipe_Pressed.png');
-}
-
-#cancelDeleteRecipe {
-	float: left;
-	margin: 15px 15px 0;
-	width: 150px;
-	height: 30px;
-	background-color: transparent;
-	border: none;
-	background-image: url('../images/recipeView/Cancel_Delete_Recipe_Unpressed.png');
-	display: block;
-	text-indent: -9999em;
-	overflow: hidden;
-	cursor: pointer;
-}
-
-#cancelDeleteRecipe:active {
-	background-image: url('../images/recipeView/Cancel_Delete_Recipe_Pressed.png');
+#deleteRecipeBox p {
+	text-align: center;
 }
 
 #recipe {
 	margin: 20px auto 0;
-	padding: 0 30px 15px 30px;
+	padding: 0 30px 15px 30px;`
 	width: 760px;
 	background-image: url('../images/recipeView/4925334098_788618e554.jpg');
 	border: ridge;
 	border-width: 10px;
 	border-color: rgba(189,183,107, 0.5);
 	box-shadow: 1px 1px 10px #555;
-}
-
-
-#backToMixerResults {
-	margin: 0 auto;
-	width: 193px;
-	height: 32px;
-	background-color: transparent;
-	border: none;
-	background-image: url('../images/recipeView/Back_To_Mixer_Results_Unpressed.png');
-	display: block;
-	text-indent: -9999em;
-	overflow: hidden;
-	cursor: pointer;
-}
-
-#backToMixerResults:active {
-	background: url('../images/recipeView/Back_To_Mixer_Results_Pressed.png') no-repeat bottom;	
-}
-
-#backToRecipes {
-	margin: 0 auto;
-	width: 191px;	
-	height: 32px;
-	background-color: transparent;
-	border: none;
-	background-image: url('../images/recipeView/Back_To_Recipe_Unpressed.png');
-	display: block;
-	text-indent: -9999em;
-	overflow: hidden;
-	cursor: pointer;
-}
-
-#backToRecipes:active {
-	background: url('../images/recipeView/Back_To_Recipe_Pressed.png') no-repeat bottom;	
-}
-
-#backToUserRecipes {
-	margin: 0 auto;
-	width: 185px;
-	height: 32px;
-	background-color: transparent;
-	border: none;
-	background-image: url('../images/recipeView/Back_To_User_Recipes_Unpressed.png');
-	display: block;
-	text-indent: -9999em;
-	overflow: hidden;
-	cursor: pointer;
-}
-
-#backToUserRecipes:active {
-	background: url('../images/recipeView/Back_To_User_Recipes_Pressed.png') no-repeat bottom;	
 }
 
 #recipe h2 {
@@ -1182,7 +1053,7 @@ figure.effect-bubba:hover p {
 #recipeHistory {
 	margin: 40px auto 20px;
 	padding: 0 0 10px 0;
-	width: 350px;
+	width: 390px;
 	text-align: center;
 	background-color: rgba(255, 255, 255, 0.5);
 	border: solid;
@@ -1190,42 +1061,6 @@ figure.effect-bubba:hover p {
 	border-radius: 10px;
 }
 
-
-#editRecipeButton {
-	float: left;
-	margin: 0 15px;
-	width: 150px;
-	height: 30px;
-	background-color: transparent;
-	border: none;
-	background-image: url('../images/recipeView/Edit_Recipe_Unpressed.png');
-	display: block;
-	text-indent: -9999em;
-	overflow: hidden;
-	cursor: pointer;
-}
-
-#editRecipeButton:active {
-	background: url('../images/recipeView/Edit_Recipe_Pressed.png') no-repeat bottom;	
-}
-
-#deleteRecipeButton {
-	float: left;
-	margin: 0 15px;
-	width: 150px;
-	height: 30px;
-	background-color: transparent;
-	border: none;
-	background-image: url('../images/recipeView/Delete_Recipe_Unpressed.png');
-	display: block;
-	text-indent: -9999em;
-	overflow: hidden;
-	cursor: pointer;
-}
-
-#deleteRecipeButton:active {
-	background: url('../images/recipeView/Delete_Recipe_Pressed.png') no-repeat bottom;	
-}
 
 #previewOptions {
 	margin: 40px auto 20px;
@@ -1250,10 +1085,6 @@ figure.effect-bubba:hover p {
 #recipeHistory li {
 	margin: 2px 0;
 	list-style: none;
-}
-
-#recipeHistory a {
-	margin: 0 5px 5px 15px;
 }
 
 #recipeForm {
@@ -1560,9 +1391,9 @@ figure.effect-bubba:hover p {
 }
 
 .contactError {
-	margin: 20px 90px 0 0;
-	text-align: right;
-	color: red;
+    margin: 0px 90px 26px 0;
+    text-align: left;
+    color: red;
 }
 
 .searchResult {
@@ -1691,54 +1522,11 @@ figure.effect-bubba:hover p {
 	list-style: none;	
 }
 
-#backToUserList {
-	height: 32px;
-	width: 182px;
-	background-image: url('../images/userList/List_Back_to_User_List_Unpressed.png');
-	display: block;
-	text-indent: -9999em;
-	overflow: hidden;
-	cursor: pointer;
-}
-
-#backToUserList:active {
-	background-image: url('../images/userList/List_Back_to_User_List_Pressed.png');
-}
-
-#usersRecipes {
-	height: 32px;
-	width: 182px;
-	background-image: url('../images/userList/List_User_Recipes_Unpressed.png');
-	display: block;
-	text-indent: -9999em;
-	overflow: hidden;
-	cursor: pointer;
-}
-
-#usersRecipes:active {
-	background-image: url('../images/userList/List_User_Recipes_Pressed.png');
-}
-
-#deleteUserBtn {
-	height: 32px;
-	width: 182px;
-	background-color: transparent;
-	border: none;
-	background-image: url('../images/userList/List_Delete_User_Unpressed.png');
-	display: block;
-	text-indent: -9999em;
-	overflow: hidden;
-	cursor: pointer;
-}
-
-#deleteUserBtn:active {
-	background-image: url('../images/userList/List_Delete_User_Pressed.png');
-}
 
 #deleteUserBox {
 	margin: 20px auto 0;
-	padding: 20px;
-	width: 330px;
+    padding: 20px 20px 0px 20px;
+	width: 340px;
 	height: 90px;
 	background-color: tomato; 
 	border: double;
@@ -1748,42 +1536,6 @@ figure.effect-bubba:hover p {
 	text-align: center;
 }
 
-#confirmDeleteUser {
-	float: left;
-	margin: 10px 20px 0;
-	width: 125px;
-	height: 32px;
-	background-color: transparent;
-	border: none;
-	background-image: url('../images/userList/Delete_User_Unpressed.png');
-	display: block;
-	text-indent: -9999em;
-	overflow: hidden;
-	cursor: pointer;
-}
-
-#confirmDeleteUser:active {
-	background-image: url('../images/userList/Delete_Recipe_Pressed.png');
-}
-
-#cancelDeleteUser {
-	float: left;
-	margin: 10px 20px 0;
-	width: 125px;
-	height: 32px;
-	background-color: transparent;
-	border: none;
-	background-image: url('../images/userList/Cancel_Delete_User_Unpressed.png');
-	display: block;
-	text-indent: -9999em;
-	overflow: hidden;
-	cursor: pointer;
-}
-
-#cancelDeleteUser:active {
-	background-image: url('../images/userList/Cancel_Delete_User_Pressed.png');
-}
-
 .adminOptionButtons {
 	margin: 10px auto;
 }
@@ -1791,21 +1543,6 @@ figure.effect-bubba:hover p {
 #adminOptionButtonsContainer {
 	margin: 0 auto 20px;
 	width: 270px;
-}
-
-#backToUserDetails {
-	height: 32px;
-	width: 182px;
-	margin: 0 auto 20px;
-	background-image: url('../images/userList/List_Back_to_User_Details_Unpressed.png');
-	display: block;
-	text-indent: -9999em;
-	overflow: hidden;
-	cursor: pointer;
-}
-
-#backToUserDetails:active {
-	background-image: url('../images/userList/List_Back_to_User_Details_Pressed.png');
 }
 
 #aboutContainer {

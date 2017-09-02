@@ -40,8 +40,8 @@ class UserPanelView extends View {
                 $html .= '<div id="deleteUserBox">'."\n";
                 $html .= '<form method="post" action="index.php?page=home" enctype="multipart/form-data">'."\n";
                 $html .= '<p><strong>Are you sure you want to delete your profile?</strong></p>'."\n";
-                $html .= '<a href="index.php?page=userPanel" id="cancelDeleteUser">Cancel</a>'."\n";
-                $html .= '<input type="submit" name="deleteProfile" value="Delete User" id="confirmDeleteUser" />'."\n";
+                $html .= '<a href="index.php?page=userPanel" id="cancelDeleteUser" class="green-button">Cancel</a>'."\n";
+                $html .= '<input type="submit" name="deleteProfile" value="Delete User" id="confirmDeleteUser" class="red-button" />'."\n";
                 $html .= '</form>'."\n";
                 $html .= '</div>'."\n";
             }

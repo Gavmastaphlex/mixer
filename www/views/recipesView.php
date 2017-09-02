@@ -38,6 +38,8 @@ class RecipesView extends View {
                 if($_SESSION['finalized']) {
 
                     $this -> model -> checkForMatchedRecipes();
+
+                    // $this -> model -> print_r2($_SESSION['finalized']);
                     
                 }
             }
@@ -93,10 +95,17 @@ class RecipesView extends View {
                 Giving the user the option to go back to the page that they've just come from that displays all the chosen users details,
                 rather than going back to the User Panel and having to negotiate there way back to the same screen.
                 */
-                if ($_GET['browseUserRecipes'] == true) {
-                    $html .= '<a href="index.php?page=userList&amp;id='.$user['userName'].'" id="backToUserDetails">Back to User Details</a>'."\n";
+                
+                if($this -> model -> adminLoggedIn) {
+
+                    $html .= '<a href="index.php?page=userList&amp;id='.$user['userName'].'" id="backToUserDetails" class="blue-button single-button">Back to User Details</a>'."\n";
+                
+                } else if($this -> model -> userLoggedIn) {
+                    $html .= '<a href="index.php?page=userPanel&amp;id='.$_SESSION['userID'].'" id="backToUserDetails" class="blue-button single-button">Back to User Details</a>'."\n";
                 }
 
+
+                
                 $html .= '<div id="searchSummary">'."\n";
 
                 /*
@@ -206,8 +215,10 @@ class RecipesView extends View {
                 $html .= '<div id="searchSummary">'."\n";
 
                 $html .= '<div id="searchOptions">'."\n";
-                $html .= '<a href="index.php?page=home&mixerReset=true#ingredients" id="newSearchBtn">New Search</a>'."\n";
-                $html .= '<a href="index.php?page=home&previousSearch=true#ingredients" id="previousSearchBtn">Previous Search</a>'."\n";
+                 
+                $html .= '<!--a href="#" class="myButton">New search</a-->'."\n";
+                $html .= '<a href="index.php?page=home&mixerReset=true#ingredients" id="newSearchBtn" class="green-button">New Search</a>'."\n";
+                $html .= '<a href="index.php?page=home&previousSearch=true#ingredients" id="previousSearchBtn" class="blue-button">Previous Search</a>'."\n";
                 $html .= '</div>'."\n";
                 
                 $html .= '<div class="clearDiv"></div>'."\n";
@@ -265,8 +276,8 @@ class RecipesView extends View {
 
                 $html = '<h2>No results!</h2>'."\n";
                 $html .= '<div id="searchOptions">'."\n";
-                $html .= '<a href="index.php?page=home&amp;mixerReset=true#ingredients" id="newSearchBtn">New Search</a>'."\n";
-                $html .= '<a href="index.php?page=home&amp;previousSearch=true#ingredients" id="previousSearchBtn">Previous Search</a>'."\n";
+                $html .= '<a href="index.php?page=home&amp;mixerReset=true#ingredients" id="newSearchBtn" class="green-button">New Search</a>'."\n";
+                $html .= '<a href="index.php?page=home&amp;previousSearch=true#ingredients" id="previousSearchBtn" class="blue-button">Previous Search</a>'."\n";
                 $html .= '</div>'."\n";
                 $html .= '<div id="searchSummary">'."\n";
                 $html .= '<p>Sorry, there aren\'t any recipes that match those ingredients!</p>';
@@ -421,7 +432,7 @@ class RecipesView extends View {
         //     if($recipe['recipeImage']) {
         //         $html .= '<img src="uploads/thumbnails/'.$recipe['recipeImage'].'" class="recipeImage" alt = "'.htmlspecialchars($recipe['recipeName']).' Picture" />'."\n";
         //     } else {
-        //         $html .= '<img src="images/recipeView/noImage.png" class="recipeImage" alt="No Image" />'."\n";
+        //         $html .= '<img src="images/noImage2.png" class="recipeImage" alt="No Image" />'."\n";
         //     }
         //     $html .= '</a>'."\n";
 
@@ -436,7 +447,7 @@ class RecipesView extends View {
             if($recipe['recipeImage']) {
                 $html .= '<img src="uploads/thumbnails/'.$recipe['recipeImage'].'" class="recipeImage" alt = "'.htmlspecialchars($recipe['recipeName']).' Picture" />'."\n";
             } else {
-                $html .= '<img src="images/recipeView/noImage.png" class="recipeImage" alt="No Image" />'."\n";
+                $html .= '<img src="images/noImage2.png" class="recipeImage" alt="No Image" />'."\n";
             }
 
             $html .= '<a href="index.php?page=recipe&amp;id='.$recipe['recipeID'].'#backToMixerResults" >'."\n";   
@@ -508,7 +519,7 @@ class RecipesView extends View {
         if($recipe['recipeImage']) {
             $html .= '<img src="uploads/thumbnails/'.$recipe['recipeImage'].'" class="recipeImage" alt = "'.htmlspecialchars($recipe['recipeName']).' Picture" />'."\n";
         } else {
-            $html .= '<img src="images/recipeView/noImage.png" class="recipeImage" alt="No Image" />'."\n";
+            $html .= '<img src="images/noImage2.png" class="recipeImage" alt="No Image" />'."\n";
         }
         
 

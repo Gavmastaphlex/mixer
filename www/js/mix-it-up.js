@@ -33,15 +33,16 @@ $(document).ready(function(){
     	    
 
 	$('#basic').click(function(){
+
+		$('#filter').val('');
+		searchFunction();
+
 		if($(this).is(':checked') == true) {
 			ingredientList.each(function(){
 				if(!$(this).hasClass('basic')) {
 					$(this).css('display', 'none');
 				}
 			})
-
-		} else {
-			searchFunction();
 		}
 	})
 
@@ -56,8 +57,9 @@ $(document).ready(function(){
 		if(searchVal != '') {
 			ingredientList.each(function() {
 
-				$(this).css( "display", "block" );
-
+				if($('#basic').is(':checked') == false){
+					$(this).css( "display", "block" );
+				}
 
 				if($(this).html().toLowerCase().indexOf(searchVal) == -1){	
 					$(this).css( "display", "none" );

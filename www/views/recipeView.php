@@ -171,8 +171,8 @@ class RecipeView extends View {
                             $html .= '<div id="deleteRecipeBox">'."\n";
                             $html .= '<form method="post" action="index.php?page=userPanel&amp;id='.$_GET['id'].'">'."\n";
                             $html .= '<p><strong>Are you sure you want to delete this recipe?</strong></p>'."\n";
-                            $html .= '<a href="index.php?page=recipe&amp;id='.$_GET['id'].'" id="cancelDeleteRecipe">Cancel</a>'."\n";
-                            $html .= '<input type="submit" name="deleteRecipe" value="Delete Recipe" id="confirmDeleteRecipe" />'."\n";
+                            $html .= '<a href="index.php?page=recipe&amp;id='.$_GET['id'].'" id="cancelDeleteRecipe" class="green-button">Cancel</a>'."\n";
+                            $html .= '<input type="submit" name="deleteRecipe" value="Delete Recipe" id="confirmDeleteRecipe" class="red-button" />'."\n";
                             $html .= '</form>'."\n";
                             $html .= '</div>'."\n";
                         }
@@ -185,7 +185,7 @@ class RecipeView extends View {
                         */
                         if($_SESSION['mixItUp'] && !$_POST['deleteButton']) {
                             $html .= '<form method="post" action="index.php?page=recipes&amp;pageNum='.$_SESSION['pageNum'].'#recipe'.$_GET['id'].'">'."\n";
-                            $html .= '<input type="submit" id="backToMixerResults" name="backToMixerResults" value="Back to Mixer results" />'."\n";
+                            $html .= '<input type="submit" id="backToMixerResults" name="backToMixerResults" value="Back to Mixer results" class="orange-button single-button" />'."\n";
                             $html .= '</form>'."\n";
 
                         } else if($_SESSION['userRecipes'] && !$_POST['deleteButton'] || $_SESSION['selectedUserRecipes']['userID']) {
@@ -215,7 +215,7 @@ class RecipeView extends View {
                             $html .= 'id='.$_SESSION['userRecipes']['userID'].'&pageNum='.$_SESSION['pageNum'].'#recipe'.$_GET['id'].'">'."\n";
                             }
 
-                            $html .= '<input type="submit" id="backToUserRecipes" name="backToUserRecipes" value="Back to User Recipes" />'."\n";
+                            $html .= '<input type="submit" id="backToUserRecipes" name="backToUserRecipes" value="Back to User Recipes" class="orange-button single-button" />'."\n";
                             $html .= '</form>'."\n";
                         } else if($_SESSION['allRecipes'] && !$_POST['deleteButton']) {
                             /*
@@ -226,7 +226,7 @@ class RecipeView extends View {
                                 last clicked on so that they can easily take off from where they left off.
                             */
                             $html .= '<form method="post" action="index.php?page=recipes&amp;pageNum='.$_SESSION['pageNum'].'#recipe'.$_GET['id'].'">'."\n";
-                            $html .= '<input type="submit" id="backToRecipes" name="backToRecipes" value="Back to Recipes" />'."\n";
+                            $html .= '<input type="submit" id="backToRecipes" name="backToRecipes" value="Back to Recipes" class="blue-button single-button" />'."\n";
                             $html .= '</form>'."\n";
                         
                         } 
@@ -241,7 +241,7 @@ class RecipeView extends View {
                         $html .= '</div>'."\n";
 
                         if(!$this -> recipe['recipeImage']) {
-                            $html .= '<img src="images/recipeView/noImage.png" alt="No Image" />'."\n";
+                            $html .= '<img src="images/noImage2.png" alt="No Image" />'."\n";
                         } else {
                             $html .= '<img src="uploads/'.$this -> recipe['recipeImage'].'" id="mainRecipePic" alt="'.htmlspecialchars($this -> recipe['recipeName']).' picture"/>'."\n";
                         }
@@ -285,8 +285,8 @@ class RecipeView extends View {
                         */
                         if($_SESSION['userName'] == $this -> recipe['userName'] || $_SESSION['userAccess'] == 'admin') {
                             $html .= '<form method="post" action="index.php?page=recipe&amp;id='.$_GET['id'].'">'."\n";  
-                            $html .= '<a href="index.php?page=editRecipe&amp;id='.$_GET['id'].'&amp;firstEditPage=true" id="editRecipeButton">Edit Recipe</a>'."\n"; 
-                            $html .= '<input type="submit" name="deleteButton" class="loginBtn" value="Delete Recipe"  id="deleteRecipeButton"/>'."\n";
+                            $html .= '<a href="index.php?page=editRecipe&amp;id='.$_GET['id'].'&amp;firstEditPage=true" id="editRecipeButton" class="green-button">Edit Recipe</a>'."\n"; 
+                            $html .= '<input type="submit" name="deleteButton" class="loginBtn red-button" value="Delete Recipe"  id="deleteRecipeButton" />'."\n";
                             $html .= '</form>'."\n";
                         }
 
@@ -334,7 +334,7 @@ class RecipeView extends View {
                             if($_SESSION['newRecipe']['recipeImagePath']) {
                              $html .= '<img src="'.$_SESSION['newRecipe']['recipeImagePath'].'" id="mainRecipePic" alt="'.htmlspecialchars($_SESSION['newRecipe']['recipeName']).' Picture"/>'."\n";
                              } else {
-                                $html .= '<img src="images/recipeView/noImage.png" alt="No Image" />'."\n";
+                                $html .= '<img src="images/noImage2.png" alt="No Image" />'."\n";
                              }
                         }
 

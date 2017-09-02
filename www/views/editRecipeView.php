@@ -420,7 +420,7 @@ class EditRecipeView extends View {
 				
 					$html .= '</select> <br />'."\n";
 					$html .= '<label for="formExtraInfo">Extra Info:</label>'."\n";
-			        $html .= '<input type="text" name="formExtraInfo" id="formExtraInfo" value="" />'."\n";
+			        $html .= '<input type="text" name="formExtraInfo" id="formExtraInfo" value="" placeholder="Finely chopped" />'."\n";
 					$html .= '<div class="clearDiv"></div>'."\n";
 					$html .= '</div>'."\n";
 				    $html .= '<input type="submit" name="confirmIngredientBtn" id="confirmIngredientBtn" value="Confirm Ingredient" />'."\n";

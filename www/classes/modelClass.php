@@ -265,6 +265,10 @@ class Model extends Dbase {
     public function checkForMatchedRecipes() {
         $confirmedIngredients = array();
 
+         // echo '<pre>';
+         // print_r($_SESSION['finalized']);
+         // echo '</pre>';
+
                 //if there's been ingredients logged through the ingredient selecting process on the Home Screen:
                 foreach($_SESSION['finalized'] as $id => $ingredient) {
 
@@ -860,15 +864,12 @@ public function confirmIngredient() {
         include 'validateClass.php';
         $validate = new Validate; 
 
-        $vresult['titleMsg'] = $validate -> checkLength($_POST['contactTitle']);
-        $vresult['firstNameMsg'] = $validate -> checkName($_POST['contactFirstName']);
-        $vresult['lastNameMsg'] = $validate -> checkName($_POST['contactLastName']);
+        $vresult['FullNameMsg'] = $validate -> checkName($_POST['contactFullName']);
+        $vresult['FullNameMsg'] = $validate -> checkLength($_POST['contactFullName']);
         $vresult['emailMsg'] = $validate -> checkEmail($_POST['contactEmail']);
         $vresult['messageMsg'] = $validate -> checkMessageLength($_POST['contactMessage']);
 
         $vresult['ok'] = $validate -> checkErrorMessages($vresult);
-
-        
 
         if ($vresult['ok'] == true) {
             $vresult['emailSent'] = $this -> sendEmail();
@@ -883,7 +884,7 @@ public function confirmIngredient() {
 
     public function sendEmail() {
 
-    $to = "Gavin.McGruddy@hotmail.com";
+    $to = "Gavin.McGruddy@gmail.com";
 
     $subject = "Message from Mixer website";
 
