@@ -2,9 +2,6 @@
 
         session_start();
 
-        
-
-
         include '../../config.php';
 
         // Get the customer from the URL
@@ -47,13 +44,16 @@
 
         } 
 
-// $arr = array('a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5);
+    if($_POST['mixItUpReset']) {
+        unset($_SESSION['liveRecipes']);
+        unset($_SESSION['finalized']);
+    }
 
-echo json_encode($_SESSION['finalized']);
+    if($_POST['recipesRequested']) {
 
+        $db = new mysqli(DBHOST,DBUSER,DBPASS,DBNAME);
 
-
-if($recipesRequested) {
+        unset($_SESSION['liveRecipes']);
 
         $confirmedIngredients = array();
 
@@ -63,19 +63,23 @@ if($recipesRequested) {
             $confirmedIngredients[] = $ingredientInfo;
         }
 
+        // echo json_encode($confirmedIngredients);
+
+        // [{"ingredientID":"13","ingredient":"Flour"},{"ingredientID":"1","ingredient":"Egg"},{"ingredientID":"84","ingredient":"Honey"},{"ingredientID":"2","ingredient":"Milk"}]
+
         $result = array();
+
+
 
         foreach($confirmedIngredients as $confirmed) {
 
-
-
             $thisId = $confirmed['ingredientID'];
 
-              $db = new mysqli(DBHOST,DBUSER,DBPASS,DBNAME);
+              // $db = new mysqli(DBHOST,DBUSER,DBPASS,DBNAME);
 
-                $qry ="SELECT recipeID FROM recipeingredients WHERE ingredientID = '%$thisId'";
+                $qry ="SELECT recipeID FROM recipeingredients WHERE ingredientID = '$thisId'";
 
-                $rs = $this -> db -> query($qry);
+                $rs = $db -> query($qry);
 
                 if($rs) {
 
@@ -84,7 +88,9 @@ if($recipesRequested) {
                         $rr = array();
 
                         while($row = $rs -> fetch_assoc()) {
-                            $rr[] = $row;
+                            // $rr[] = $row;
+                            $rr[] = array('id' => $row['recipeID']);
+
                         }
 
                      } 
@@ -98,47 +104,65 @@ if($recipesRequested) {
             if(is_array($rr)) {
                 $result[] = $rr;
             }
-
-
+            
         }
 
+        /*Explodes the array - bringing all the buried results to one top layer*/
         $recipeIDiterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($result));
         $recipeIDArray = array();
+
+
 
         foreach($recipeIDiterator as $key=>$value) {
 
             $recipeIDArray[] = $value;
+
             $recipeIDInstances = (array_count_values($recipeIDArray));
+
+        }
+
+            
+        // echo json_encode($recipeIDInstances);
+
             $uniqRecipeID = array_unique($recipeIDArray);
+
+             // echo json_encode($uniqRecipeID);
 
             foreach ($uniqRecipeID as $uniqRecipe) {
 
-                $recipeID = $uniqRecipe;
+                    $recipeID = $uniqRecipe;
 
-                    $qry = "SELECT count(ingredientID) FROM recipeingredients WHERE recipeID = $recipeID";
+                    // echo json_encode($recipeID);
 
-                    $rs = $this -> db -> query($qry);
+                    $qry = "SELECT count(ingredientID) FROM recipeingredients WHERE recipeID = $uniqRecipe";
+
+                    $rs = $db -> query($qry);
 
                     if($rs -> num_rows > 0) {
                             $count = array();
 
                         while($row = $rs -> fetch_assoc()) {
-                            $ingredientCount[] = $row;
+                            // $ingredientCount[] = $row;
+                            $ingredientCount[] = array($uniqRecipe => $row['count(ingredientID)']);
                         }
 
                     }
- 
-                $countIterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($ingredientCount));
 
-                foreach($countIterator as $key=>$value) {
+                // echo json_encode($ingredientCount);
+
+                // $countIterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($ingredientCount));
+
+                foreach($ingredientCount as $key=>$value) {
                     $count = $value;
                 }
 
-                if($recipeIDInstances[$recipeID] == $count) {
-                    $_SESSION['liveRecipes'][$recipeID] = $recipeID;
+                // echo json_encode($count);
+
+                if($recipeIDInstances[$uniqRecipe] == $count[$uniqRecipe]) {
+                    $_SESSION['liveRecipes'][$uniqRecipe] = $uniqRecipe;
+                    echo json_encode($uniqRecipe);
                 } 
-            }          
-        }
+            }
 
 }
 

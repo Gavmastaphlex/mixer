@@ -15,7 +15,8 @@
 
 			$_SESSION['finalized'][$_POST['ingredientID']] = array(
             'ingredientID' => $_POST['ingredientID'],
-            'ingredientName' => $_POST['ingredientName']
+            'ingredientName' => $_POST['ingredientName'],
+            'basic' => $_POST['basic']
             );
 	            
 	    }

@@ -5,6 +5,10 @@ class RecipesView extends View {
             
     protected function displayContent() {
 
+         // echo '<pre>';
+         // print_r($_POST);
+         // echo '</pre>';
+
         /*
         If $_GET['recipes'] is true, that means the user has requested to view ALL RECIPES,
         so we have need of the session ids that hold the information for the mixer search.
@@ -12,6 +16,7 @@ class RecipesView extends View {
         if($_GET['recipes']) {
             unset($_SESSION['mixItUp']);
             unset($_SESSION['finalized']);
+            unset($_SESSION['liveRecipes']);
         }
 
         /*
@@ -205,6 +210,10 @@ class RecipesView extends View {
 
             unset($_SESSION['userRecipes']);
 
+            // echo '<pre>';
+            // print_r($_SESSION);
+            // echo '</pre>'; 
+
             /*
             Checking to see there was any recipes matched to the ingredients that the user inputted (if there was the query
             that is run stores any matched recipes into the $_SESSION['mixItUp'] variable )
@@ -217,8 +226,8 @@ class RecipesView extends View {
                 $html .= '<div id="searchOptions">'."\n";
                  
                 $html .= '<!--a href="#" class="myButton">New search</a-->'."\n";
-                $html .= '<a href="index.php?page=home&mixerReset=true#ingredients" id="newSearchBtn" class="green-button">New Search</a>'."\n";
-                $html .= '<a href="index.php?page=home&previousSearch=true#ingredients" id="previousSearchBtn" class="blue-button">Previous Search</a>'."\n";
+                $html .= '<a href="index.php?page=home&mixerReset=true" id="newSearchBtn" class="green-button">New Search</a>'."\n";
+                $html .= '<a href="index.php?page=home&previousSearch=true" id="previousSearchBtn" class="blue-button">Previous Search</a>'."\n";
                 $html .= '</div>'."\n";
                 
                 $html .= '<div class="clearDiv"></div>'."\n";
@@ -276,12 +285,10 @@ class RecipesView extends View {
 
                 $html = '<h2>No results!</h2>'."\n";
                 $html .= '<div id="searchOptions">'."\n";
-                $html .= '<a href="index.php?page=home&amp;mixerReset=true#ingredients" id="newSearchBtn" class="green-button">New Search</a>'."\n";
-                $html .= '<a href="index.php?page=home&amp;previousSearch=true#ingredients" id="previousSearchBtn" class="blue-button">Previous Search</a>'."\n";
+                $html .= '<a href="index.php?page=home&amp;mixerReset=true" id="newSearchBtn" class="green-button">New Search</a>'."\n";
+                $html .= '<a href="index.php?page=home&amp;previousSearch=true" id="previousSearchBtn" class="blue-button">Previous Search</a>'."\n";
                 $html .= '</div>'."\n";
                 $html .= '<div id="searchSummary">'."\n";
-                $html .= '<p>Sorry, there aren\'t any recipes that match those ingredients!</p>';
-                $html .= '<a href="index.php?page=home&amp;mixerReset=true#ingredients">Back Home</a>'."\n";
                 $html .= '<img src="images/noFoodPic.jpg" id="noResultsImage" alt="Empty Plate Picture" />'."\n";
 
             }
@@ -315,7 +322,7 @@ class RecipesView extends View {
                     $html = '<h2>No results!</h2>'."\n";
                     $html .= '<div id="searchSummary">'."\n";
                     $html .= '<p>Try entering some ingredients!</p>';
-                    $html .= '<a href="index.php?page=home&amp;mixerReset=true#ingredients">Back Home</a>'."\n";
+                    $html .= '<a href="index.php?page=home&amp;mixerReset=true">Back Home</a>'."\n";
                     $html .= '<img src="images/noFoodPic.jpg" id="noResultsImage" alt="Empty Plate Picture" />'."\n";
                     $html .= '</div>'."\n";
 
@@ -381,8 +388,6 @@ class RecipesView extends View {
                 //for some reason there was no recipes returned, informing the user that this is the case
 
                 $html .= '<div id="searchSummary">'."\n";
-                $html .= '<p>Sorry, there are no recipes available here! Please try again.</p>';
-                $html .= '<a href="index.php?page=home&amp;mixerReset=true#ingredients">Back Home</a>'."\n";
                 $html .= '<img src="images/noFoodPic.jpg" id="noResultsImage" alt="Empty Plate Picture" />'."\n";
 
             }
@@ -430,7 +435,7 @@ class RecipesView extends View {
         //     $html .= '<a href="index.php?page=recipe&amp;id='.$recipe['recipeID'].'#backToMixerResults" >'."\n";       
 
         //     if($recipe['recipeImage']) {
-        //         $html .= '<img src="uploads/thumbnails/'.$recipe['recipeImage'].'" class="recipeImage" alt = "'.htmlspecialchars($recipe['recipeName']).' Picture" />'."\n";
+        //         $html .= '<img src="uploads/'.$recipe['recipeImage'].'" class="recipeImage" alt = "'.htmlspecialchars($recipe['recipeName']).' Picture" />'."\n";
         //     } else {
         //         $html .= '<img src="images/noImage2.png" class="recipeImage" alt="No Image" />'."\n";
         //     }
@@ -445,7 +450,7 @@ class RecipesView extends View {
             $html .= '<figure class="recipeResult effect-bubba">'."\n";
 
             if($recipe['recipeImage']) {
-                $html .= '<img src="uploads/thumbnails/'.$recipe['recipeImage'].'" class="recipeImage" alt = "'.htmlspecialchars($recipe['recipeName']).' Picture" />'."\n";
+                $html .= '<img src="uploads/'.$recipe['recipeImage'].'" class="recipeImage" alt = "'.htmlspecialchars($recipe['recipeName']).' Picture" />'."\n";
             } else {
                 $html .= '<img src="images/noImage2.png" class="recipeImage" alt="No Image" />'."\n";
             }
@@ -517,7 +522,7 @@ class RecipesView extends View {
         
 
         if($recipe['recipeImage']) {
-            $html .= '<img src="uploads/thumbnails/'.$recipe['recipeImage'].'" class="recipeImage" alt = "'.htmlspecialchars($recipe['recipeName']).' Picture" />'."\n";
+            $html .= '<img src="uploads/'.$recipe['recipeImage'].'" class="recipeImage" alt = "'.htmlspecialchars($recipe['recipeName']).' Picture" />'."\n";
         } else {
             $html .= '<img src="images/noImage2.png" class="recipeImage" alt="No Image" />'."\n";
         }
@@ -665,9 +670,9 @@ class RecipesView extends View {
         if($pageNum != 1) {
             $previousPage = $pageNum - 1;
             if(isset($_GET['id'])) {
-            $html .= '<li><a href="index.php?page=recipes&amp;id='.$_GET['id'].'&amp;pageNum='.$previousPage.'#content">Previous</a></li>'."\n";
+            $html .= '<li><a href="index.php?page=recipes&amp;id='.$_GET['id'].'&amp;pageNum='.$previousPage.'#content">&lt;&lt;</a></li>'."\n";
             } else {
-               $html .= '<li><a href="index.php?page=recipes&amp;pageNum='.$previousPage.'#content">Previous</a></li>'."\n"; 
+               $html .= '<li><a href="index.php?page=recipes&amp;pageNum='.$previousPage.'#content">&lt;&lt;</a></li>'."\n"; 
             }
             
         }
@@ -699,9 +704,9 @@ class RecipesView extends View {
             $nextPage = $pageNum + 1;
 
             if(isset($_GET['id'])) {
-                $html .= '<li><a href="index.php?page=recipes&amp;id='.$_GET['id'].'&amp;pageNum='.$nextPage.'#content">Next</a></li>'."\n";
+                $html .= '<li><a href="index.php?page=recipes&amp;id='.$_GET['id'].'&amp;pageNum='.$nextPage.'#content">&gt;&gt;</a></li>'."\n";
             } else {
-                $html .= '<li><a href="index.php?page=recipes&amp;pageNum='.$nextPage.'#content">Next</a></li>'."\n";
+                $html .= '<li><a href="index.php?page=recipes&amp;pageNum='.$nextPage.'#content">&gt;&gt;</a></li>'."\n";
             }
 
             

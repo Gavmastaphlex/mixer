@@ -268,7 +268,7 @@ class RecipeView extends View {
                         $html .= '</div>'."\n";
                         $html .= '<div id="method">'."\n";
                         $html .= '<h4>Method</h4>'."\n";
-                        $html .= '<p>'.$this -> recipe['recipeMethod'].'</p>'."\n";
+                        $html .= '<p>'.nl2br($this -> recipe['recipeMethod']).'</p>'."\n";
                         $html .= '</div>'."\n";
                         $html .= '<div class="clearDiv"></div>'."\n";
                         $html .= '</div>'."\n";
@@ -293,6 +293,54 @@ class RecipeView extends View {
                         $html .= '<div class="clearDiv"></div>'."\n"; 
                         $html .= '</div>'."\n";               
                         $html .= '</div>'."\n";
+
+                        if($_SESSION['mixItUp'] && !$_POST['deleteButton']) {
+                            $html .= '<form method="post" action="index.php?page=recipes&amp;pageNum='.$_SESSION['pageNum'].'#recipe'.$_GET['id'].'">'."\n";
+                            $html .= '<input type="submit" id="backToMixerResults" name="backToMixerResults" value="Back to Mixer results" class="orange-button single-button" />'."\n";
+                            $html .= '</form>'."\n";
+
+                        } else if($_SESSION['userRecipes'] && !$_POST['deleteButton'] || $_SESSION['selectedUserRecipes']['userID']) {
+
+                        /*
+                        The following code will run if $_SESSION['userRecipes'] is true (which will display the user whos logged in recipes)
+                        or if $_SESSION['selectedUserRecipes']['userID'] is true, which is instantiated when the Admin chooses a user to view
+                        their recipes
+                        */
+                            $html .= '<form method="post" action="index.php?page=recipes&amp;';
+
+                            
+                            if($_GET['userID']) {
+
+                                /*
+                            if $_GET['userID'] is true then this link will lead the user back to the recipes page where their own recipes will
+                            be displayed.
+                            */
+                            $html .= 'browseUserRecipes='.$_GET['userID'].'&pageNum='.$_SESSION['pageNum'].'#recipe'.$this -> recipe['recipeID'].'">'."\n";
+
+                            } else {
+                                /*
+                                if $_GET['userID'] is false then we revert to using the userID that is stored in $_SESSION['userRecipes']['userID']
+                                since it is the admin that is viewing someone elses recipes, so that users id is temporarily stored in the session'
+                                variable until it is reset when the admin gets out of the userlist / userdetails page.
+                                */
+                            $html .= 'id='.$_SESSION['userRecipes']['userID'].'&pageNum='.$_SESSION['pageNum'].'#recipe'.$_GET['id'].'">'."\n";
+                            }
+
+                            $html .= '<input type="submit" id="backToUserRecipes" name="backToUserRecipes" value="Back to User Recipes" class="orange-button single-button" />'."\n";
+                            $html .= '</form>'."\n";
+                        } else if($_SESSION['allRecipes'] && !$_POST['deleteButton']) {
+                            /*
+                                If the previous conditions in this if statement fail to be met, and $_SESSION['allRecipes'] is true, then this link
+                                that is generated at the top of the Recipe page will link back to the Recipes Page where all the recipes will be
+                                displayed. It will display the last page that the user was on (since that value has been stored in a session
+                                variable) and the recipeID is called on as an anchor so that the page will be displayed at the recipe that the user
+                                last clicked on so that they can easily take off from where they left off.
+                            */
+                            $html .= '<form method="post" action="index.php?page=recipes&amp;pageNum='.$_SESSION['pageNum'].'#recipe'.$_GET['id'].'">'."\n";
+                            $html .= '<input type="submit" id="backToRecipes" name="backToRecipes" value="Back to Recipes" class="blue-button single-button" />'."\n";
+                            $html .= '</form>'."\n";
+                        
+                        } 
                        
                         return $html;        
                     
@@ -355,7 +403,7 @@ class RecipeView extends View {
                         $html .= '</div>'."\n";
                         $html .= '<div id="method">'."\n";
                         $html .= '<h4>Method</h4>'."\n";
-                        $html .= '<p>'.$_SESSION['newRecipe']['recipeMethod'].'</p>'."\n";
+                        $html .= '<p>'.nl2br($_SESSION['newRecipe']['recipeMethod']).'</p>'."\n";
                         $html .= '</div>'."\n";
                         $html .= '<div class="clearDiv"></div>'."\n";
                         $html .= '</div>'."\n";

@@ -278,6 +278,8 @@ class Model extends Dbase {
                 
                      }
 
+                    $_SESSION['confirmedIngredients'] = $confirmedIngredients;
+
                      /*
                      After this foreach loop runs, the ingredients that are stored in the $_SESSION['finalized'] are stored in
                      a multidimensional array.
@@ -349,6 +351,9 @@ class Model extends Dbase {
 
                                 }
 
+                                 $_SESSION['result'] = $result;
+
+
                     /*
                      Here is what is contained in the $result array after the above code is executed.
 
@@ -410,6 +415,10 @@ class Model extends Dbase {
 
 
                         $recipeIDiterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($result));
+                        
+
+                        $_SESSION['recipeIDiterator'] = $recipeIDiterator;
+
                         /*
                         The above line of code in effect explodes the array, bringing all the buried results
                         in the varied elements to one top layer.
@@ -450,6 +459,9 @@ class Model extends Dbase {
 
                             $recipeIDInstances = (array_count_values($recipeIDArray));
 
+
+                            $_SESSION['recipeIDInstances'] = $recipeIDInstances;
+
                             /*
                                     This code lumps the different instances of each recipeID that are in the
                                     recipeIDArray together into seperate elements that are headed by that
@@ -471,6 +483,8 @@ class Model extends Dbase {
                             */
 
                             $uniqRecipeID = array_unique($recipeIDArray);
+
+                            $_SESSION['uniqRecipeID'] = $uniqRecipeID;
 
                             /*
 
@@ -509,6 +523,9 @@ class Model extends Dbase {
                                         */
 
                                         $countIterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($ingredientCount));
+
+                                        //   The above line of code in effect explodes the array, bringing all the buried results
+                                        //   in the varied elements to one top layer.
 
                                         foreach($countIterator as $key=>$value) {
                                             $count = $value;

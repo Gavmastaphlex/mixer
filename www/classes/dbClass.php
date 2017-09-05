@@ -344,7 +344,8 @@ class Dbase {
 
     public function getBasicIngredients() {
 
-        $qry = "SELECT ingredientID, ingredientName FROM ingredients WHERE basicIngredient = '1' ORDER BY ingredientName";
+        $qry = "SELECT ingredientID FROM ingredients WHERE basicIngredient = '1'";
+        // $qry = "SELECT ingredientID, ingredientName FROM ingredients WHERE basicIngredient = '1' ORDER BY ingredientName";
 
         $rs = $this -> db -> query($qry);
 

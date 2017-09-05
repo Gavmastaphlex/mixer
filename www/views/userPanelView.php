@@ -15,7 +15,7 @@ class UserPanelView extends View {
             unset($_SESSION['newRecipe']);
             unset($_SESSION['updateRecipe']);
 
-            $html .= '<h3>Your recipe has been cancelled.</h3>'."\n";
+            $html .= '<h3 style="color: #ffffff;">Your recipe has been cancelled.</h3>'."\n";
         }
 
         if($_POST['deleteRecipe']) {
@@ -32,7 +32,8 @@ class UserPanelView extends View {
             unset($_SESSION['lastPage']);
             unset($_SESSION['pageNum']);
             unset($_SESSION['newIngredient']);
-            
+            unset($_SESSION['liveRecipes']);
+
         
         if($this -> model -> userLoggedIn) {
 

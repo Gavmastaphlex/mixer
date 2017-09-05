@@ -1,61 +1,238 @@
 $(document).ready(function(){
 
-	var ingredientList = $('#noscriptSpecializedContainer li');
+	$( "#clear-mix-it-up" ).click(function( event ) {
 
-	$('#noscriptSpecializedContainer li').click(function(){
-		if(!$(this).hasClass('selected')) {
-			$(this).clone().appendTo( "#finalizedContainer ul" );
-			// $(this).addClass('selected');
-		}
+  		event.preventDefault();
 
-	    var ingredientName = $(this).html();
-	    var ingredientID = $(this).attr('id').split('-')
+		$("#finalizedContainer .ingredient").each(function(){
 
-	    $.post("js/routes/mix-it-up.php", { "ingredientName": ingredientName, "ingredientID": ingredientID[1] } );
+			$("#ingredientList li").each(function(){
+				$(this).css('display', 'block');
+			})
+
+			if($('#basic').is(':checked') == true) {
+				$("#basic").prop("checked", false);
+			}
+
+			$('#mix-it-up').removeClass('red-button').addClass('grey-button');
+			$('#mix-it-up').attr('title', 'No recipes matched');
+
+			var element = $(this);
+			var added = false;
+			var targetList = $('#ingredientList');
+
+			$(this).fadeOut("fast", function() {
+
+		        $(".ingredient", targetList).each(function(){
+
+		            if ($(this).text() > $(element).text()) {
+		                $(element).insertBefore($(this)).fadeIn("fast");
+		                added = true;
+		                return false;
+		            }
+
+		        });
+
+		        if(!added) $(element).appendTo($(targetList)).fadeIn("fast");
+
+		    });
+
+		});
+
+		$.post( "js/autocomplete.php", { mixItUpReset: "true" })
+		.done(function( data ) {
+			$('#mix-it-up').removeAttr('data-badge');
+			
+		})
+	});
+
+	$("#ingredientListContainer").on("click", ".ingredient", function(){
+
+		var ingredientName = $(this).html();
+	    var ingredientID = $(this).attr('id').split('-');
+		var element = $(this);
+		var added = false;
+		var targetList = $('#finalizedListContainer');
+
+		$(this).fadeOut("fast", function() {
+        $(".ingredient", targetList).each(function(){
+	            if ($(this).text() > $(element).text()) {
+	                $(element).insertBefore($(this)).fadeIn("fast");
+	                added = true;
+	                return false;
+	            }
+	        });
+	        if(!added) $(element).appendTo($(targetList)).fadeIn("fast");
+	    });
+
+	    if($(this).hasClass('basic')) {
+	    	var basicIngredient = 'yes';
+	    } else {
+	    	var basicIngredient = 'no';
+	    }
+
+	    $.post("js/routes/mix-it-up.php", { "ingredientName": ingredientName, "ingredientID": ingredientID[1], "basic": basicIngredient } ).done(function() {
+		  	$.post( "js/autocomplete.php", { recipesRequested: "true" })
+			  .done(function( data ) {
+			  	var splitData = data.split('"');
+			  	var filteredData = splitData.filter(function(v){return v!==''});
+
+			  	if(filteredData.length != $('#mix-it-up').attr('data-badge')) {
+
+			  		if(filteredData.length > 0) {
+			  			$('#mix-it-up').attr('data-badge', filteredData.length);
+						$('#mix-it-up').removeClass('grey-button').addClass('red-button');
+
+
+				  		if(filteredData.length == 1) {
+				  			new Noty({
+							    text: 'You\'ve matched 1 recipe!' ,
+							    theme: 'mint',
+							    timeout: 5000,
+							    progressBar: true
+
+							}).show();
+							$('#mix-it-up').attr('title', 'You\'ve matched 1 recipe!');
+				  		} else {
+				  			new Noty({
+							    text: 'You\'ve matched ' + filteredData.length + ' recipes!' ,
+							    theme: 'mint',
+							    timeout: 5000,
+							    progressBar: true
+
+							}).show();
+							$('#mix-it-up').attr('title', 'You\'ve matched ' + filteredData.length + ' recipes!');
+				  		}
+
+				  	} else {
+				  		$('#mix-it-up').removeAttr('data-badge');
+				  		$('#mix-it-up').removeClass('red-button').addClass('grey-button');
+				  		$('#mix-it-up').attr('title', 'No recipes matched');
+				  	}
+
+			  	}
+			  	
+			  });
+		  });;
 
 	    $(this).remove();
 
 	})
 
 
-	$("#finalizedContainer").on("click", ".ingredient", function(){
+	$("#finalizedListContainer").on("click", ".ingredient", function(){
 
-		$(this).clone().appendTo( "#noscriptSpecializedContainer ul" );
+		$("#ingredientList li").each(function(){
+				$(this).css('display', 'block');
+			})
 
-	    var ingredientID = $(this).attr('id').split('-');
-	    
-	    $.post("js/routes/mix-it-up.php", { "removeFinalized": "true", "ingredientID": ingredientID[1] } );
+			if($('#basic').is(':checked') == true) {
+				$("#basic").prop("checked", false);
+			}
 
-	    $(this).remove();
+		var ingredientID = $(this).attr('id').split('-');
+		var element = $(this);
+		var added = false;
+		var targetList = $('#ingredientList');
 
+		$(this).fadeOut("fast", function() {
+        $(".ingredient", targetList).each(function(){
+	            if ($(this).text() > $(element).text()) {
+	                $(element).insertBefore($(this)).fadeIn("fast");
+	                added = true;
+	                return false;
+	            }
+	        });
+	        if(!added) $(element).appendTo($(targetList)).fadeIn("fast");
+	    });
+
+		
+	    $.post("js/routes/mix-it-up.php", { "removeFinalized": "true", "ingredientID": ingredientID[1] } ).done(function() {
+		  	$.post( "js/autocomplete.php", { recipesRequested: "true" })
+			  .done(function( data ) {
+			  	var splitData = data.split('"');
+			  	var filteredData = splitData.filter(function(v){return v!==''});
+
+			  	if(filteredData.length != $('#mix-it-up').attr('data-badge')) {
+
+			  		if(filteredData.length > 0) {
+			  			$('#mix-it-up').attr('data-badge', filteredData.length);
+						$('#mix-it-up').removeClass('grey-button').addClass('red-button');
+
+				  		if(filteredData.length == 1) {
+				  			new Noty({
+							    text: 'You\'ve matched 1 recipe!' ,
+							    theme: 'mint',
+							    timeout: 5000,
+							    progressBar: true
+
+							}).show();
+							$('#mix-it-up').attr('title', 'You\'ve matched 1 recipe!');
+				  		} else {
+				  			new Noty({
+							    text: 'You\'ve matched ' + filteredData.length + ' recipes!' ,
+							    theme: 'mint',
+							    timeout: 5000,
+							    progressBar: true
+
+							}).show();
+							$('#mix-it-up').attr('title', 'You\'ve matched ' + filteredData.length + ' recipes!');
+				  		}
+
+				  	} else {
+			  		$('#mix-it-up').removeAttr('data-badge');
+			  		$('#mix-it-up').removeClass('red-button').addClass('grey-button');
+			  		$('#mix-it-up').attr('title', 'No recipes matched');
+			  		}
+
+			  	}
+			  });
+		  });;
 
 	});
     	    
-
 	$('#basic').click(function(){
 
 		$('#filter').val('');
-		searchFunction();
+
+		$("#ingredientList li").each(function(){
+			$(this).css('display', 'block');
+		})
 
 		if($(this).is(':checked') == true) {
-			ingredientList.each(function(){
+			$("#ingredientList li").each(function(){
 				if(!$(this).hasClass('basic')) {
 					$(this).css('display', 'none');
 				}
 			})
-		}
+		} 
 	})
 
 
-	$('#filter').on('keyup', searchFunction);
+	$('#mix-it-up').click(function() {
+		event.preventDefault(); 
 
+		if($(this).hasClass('red-button')) {
+			$('#mixItUp2').click();
+		}
+
+	    
+	})
+
+	$('#filter').on('keyup', searchFunction);
+	$('#filter').on('focus', searchFunction);
 
 	function searchFunction() {
+
+
+		if($('#basic').is(':checked') == true) {
+			$("#basic").prop("checked", false);
+		}
 
 		var searchVal = $('#filter').val().toLowerCase();
 
 		if(searchVal != '') {
-			ingredientList.each(function() {
+			$("#ingredientList li").each(function() {
 
 				if($('#basic').is(':checked') == false){
 					$(this).css( "display", "block" );
@@ -68,47 +245,14 @@ $(document).ready(function(){
 			});
 
 		} else {
-			ingredientList.css('display', 'block');
+			$("#ingredientList li").each(function() {
+				$(this).css( "display", "block" );
+			});
 		}
 
 	}
+	
+	
 
 
 })
-
-// function submitIngredients(ingredientID, ingredientName) {
-// 	//instantiate the XHR
-// 	var xhr = getXHR();
-// 	//Define the url
-// 	var url = 'js/routes/mix-it-up.php?ingredientID=' + ingredientID + '&ingredientName=' + ingredientName;
-// 	//console.log(url);
-// 	//open the connection
-// 	xhr.open('GET', url, true);
-// 	xhr.send(null);
-// 	//tap into the onreadystate paramter
-// 	xhr.onreadystatechange = function() {
-// 		if(xhr.readyState == 4 && xhr.status == 200) {
-// 		//output suggestions
-// 		//ingredientSuggestions.innerHTML = xhr.responseText;
-// 			if(xhr.responseText != false) {
-// 			var suggestions = JSON.parse(xhr.responseText);
-// 			$('#specializedList').html('');
-// 			$.each(suggestions, function(i, item) {
-// 			// Create elements
-// 			var li = $('<li></li>');
-// 			var form = $('<form></form>').attr('method','post').attr('action', 'index.php?page=home#ingredients');
-// 			var input1 = $('<input />').attr('type','hidden').attr('name', 'selectedIngredientID').attr('value', item.id);
-// 			var input2 = $('<input />').attr('type','submit').attr('name', 'selectedIngredient').attr('value', item.name).addClass('homeIngredients');
-// 			// Append
-// 			$(form).append(input1);
-// 			$(form).append(input2);
-// 			$(li).append(form).click(addIngredient);
-// 			$('#specializedList').append(li);
-// 			});
-// 			//get the divs
-// 			} else {
-// 				$('#specializedList').html('No suggestions');
-// 			}
-// 		}
-// 	}
-// }

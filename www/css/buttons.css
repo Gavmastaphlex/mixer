@@ -196,9 +196,49 @@
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5126', endColorstr='#ff9666',GradientType=0);
 	background-color:#ff5126;
 }
+
 .orange-button:active {
 	position:relative;
 	top:1px;
+}
+
+
+.grey-button {
+	-moz-box-shadow:inset 0px 1px 3px 0px #91b8b3;
+	-webkit-box-shadow:inset 0px 1px 3px 0px #91b8b3;
+	box-shadow:inset 0px 1px 3px 0px #91b8b3;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #768d87), color-stop(1, #6c7c7c));
+	background:-moz-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+	background:-webkit-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+	background:-o-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+	background:-ms-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+	background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#768d87', endColorstr='#6c7c7c',GradientType=0);
+	background-color:#768d87;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	border:1px solid #566963;
+	display:inline-block;
+	cursor:default;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding: 6px 24px 6px 24px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #2b665e;
+}
+
+
+#clear-mix-it-up {
+    float: left;
+    margin: 0vw 26px 0px 0vw;
+}
+
+#mix-it-up {
+	float: left;
+    margin: 0vw 0px 0px 0px;
 }
 
 .single-button {
@@ -271,3 +311,4 @@
 #editRecipeButton, #deleteRecipeButton {
 	margin:10px 10px 0px;
 }
+

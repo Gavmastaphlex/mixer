@@ -36,8 +36,11 @@ abstract class View {
         /*
         Displaying all the header information
         */
-        
-        $html =  '<html>'."\n";
+        if($this -> pageInfo['pageName'] == 'home') {
+            $html =  '<html style="background-image:url(images/home-background.jpg);">'."\n";
+        } else {
+            $html =  '<html style="background-image:url(images/background.jpg);">'."\n";
+        }
         $html .= '<head>'."\n";
         $html .= '<meta charset="UTF-8">'."\n";
         $html .= '<title>'.$this -> pageInfo['pageTitle'].'</title>'."\n";
@@ -47,6 +50,7 @@ abstract class View {
         $html .= '<link rel="stylesheet" type="text/css" href="css/buttons.css" />'."\n";
         $html .= '<link rel="stylesheet" type="text/css" href="css/styles.css" />'."\n";
         $html .= '<link rel="stylesheet" type="text/css" href="css/form.css" />'."\n";
+        $html .= '<link rel="stylesheet" type="text/css" href="css/noty.css" />'."\n";
         $html .= '<link href="http://fonts.googleapis.com/css?family=Text+Me+One|Raleway:400,200" rel="stylesheet" type="text/css" />'."\n";
         $html .= '<meta name="description" content="'.$this -> pageInfo['pageDescription'].'" />'."\n";
         $html .= '<meta name="keywords" content="'.$this -> pageInfo['pageKeywords'].'" />'."\n";
@@ -103,7 +107,9 @@ abstract class View {
         $html .= '<div id="container" class="container">'."\n";
         $html .= '<div class="wrapper">'."\n";
         
-        $html .= '<div id="content">'."\n";
+        if($this -> pageInfo['pageName'] != 'home') {
+            $html .= '<div id="content">'."\n";
+        }
         
         return $html;
         
@@ -112,9 +118,10 @@ abstract class View {
     
     private function displayFooter() {
         
+        if($this -> pageInfo['pageName'] != 'home') {
+            $html = '</div>'."\n";
+        }
 
-        
-        $html = '</div>'."\n";
         $html .= '<div id="footer">'."\n";
         $html .= '<p>Copyright 2012, Mixer Corporation Inc.</p>'."\n";
         $html .= '</div>'."\n";
@@ -140,6 +147,8 @@ abstract class View {
         $html .= '<script type="text/javascript" src="js/classie.js"></script>'."\n";
         $html .= '<script type="text/javascript" src="js/menu.js"></script>'."\n";
         $html .= '<script type="text/javascript" src="js/scripts.js"></script>'."\n";
+        $html .= '<script type="text/javascript" src="js/noty.min.js"></script>'."\n";
+
 
         $html .= '</body>'."\n";
         $html .= '</html>'."\n";

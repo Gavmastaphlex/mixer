@@ -6,13 +6,13 @@
 		// Append
 		$(keywordDiv).append(label);
 		$(keywordDiv).append(input);
-		$('#specializedTypes').append(keywordDiv);
+		$('#ingredientContainer').append(keywordDiv);
 
 		var specializedDiv = $('<div></div>').attr('id','specializedContainer').addClass('ingredientsContainer');
 		var specializedUl = $('<ul></ul>').attr('id','specializedList');
 		
 		$(specializedDiv).append(specializedUl);
-		$('#specializedTypes').append(specializedDiv);
+		$('#ingredientContainer').append(specializedDiv);
 
 
 var ingredientInput = document.getElementById('keyword');

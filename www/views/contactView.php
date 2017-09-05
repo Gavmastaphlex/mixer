@@ -4,6 +4,17 @@ class ContactView extends View {
         
     protected function displayContent() {
 
+    	unset($_SESSION['confirmed']);
+            unset($_SESSION['newRecipe']);
+            unset($_SESSION['updateRecipe']);
+            unset($_SESSION['finalized']);
+            unset($_SESSION['mixItUp']);
+            unset($_SESSION['allRecipes']);
+            unset($_SESSION['lastPage']);
+            unset($_SESSION['pageNum']);
+            unset($_SESSION['newIngredient']);
+            unset($_SESSION['liveRecipes']);
+
     	if($_POST['contactSubmit']) {
 					$vresult = $this -> model -> validateContactForm();
 

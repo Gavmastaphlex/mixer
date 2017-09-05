@@ -5,6 +5,17 @@ class RegisterView extends View {
         
     protected function displayContent() {
 
+    	unset($_SESSION['confirmed']);
+            unset($_SESSION['newRecipe']);
+            unset($_SESSION['updateRecipe']);
+            unset($_SESSION['finalized']);
+            unset($_SESSION['mixItUp']);
+            unset($_SESSION['allRecipes']);
+            unset($_SESSION['lastPage']);
+            unset($_SESSION['pageNum']);
+            unset($_SESSION['newIngredient']);
+            unset($_SESSION['liveRecipes']);
+
     				if($_GET['changePassword'] == true || $_POST['confirmPasswordBtn']) {
 
     								/*
@@ -28,7 +39,7 @@ class RegisterView extends View {
 			    				if ($ok == true) {
 
 			                        	$html .= '<h3>Your password has been successfully changed!</h3>'."\n";
-			                        	$html .= '<img src="images/happy-chef2.png" id="registeredImage" alt="Success Picture" />'."\n";
+			                        	$html .= '<img src="images/happy-chef.png" id="registeredImage" alt="Success Picture" />'."\n";
 
 			                        } else {
 
@@ -150,7 +161,7 @@ class RegisterView extends View {
         			if ($vresult['ok'] == true) {
 
                    			$html .= '<h3>Thank you '.$_POST['registerFirstName'].'. You have been registered! Please login now!</h3>'."\n";
-                   			$html .= '<img src="images/happy-chef2.png" id="registeredImage" alt="Success Picture" />'."\n";
+                   			$html .= '<img src="images/happy-chef.png" id="registeredImage" alt="Success Picture" />'."\n";
 
                         } else {
 
