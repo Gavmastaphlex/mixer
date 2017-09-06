@@ -7,9 +7,4 @@ define('DBPASS', '');
 define('DBNAME', 'mixer');
 
 
-
-
-
-
-
 ?>

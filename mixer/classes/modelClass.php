@@ -662,7 +662,7 @@ public function confirmIngredient() {
                             if($quantity == '1' || $quantity == '1/2' || $quantity == '1/3' || $quantity == '1/4' || $quantity == '1/8' || $quantity == '3/4' || $quantity == '2/3') {
                                                 $result = ''.$quantity.' '.$measurement.' '.$extraInfo.' '.$ingredient.''; 
                             } else {
-                                if($ingredient == 'Beans' || $ingredient == 'Chickpeas' || $ingredient == 'Baked Beans' || $ingredient == 'Corn Chips') {
+                                if(substr($ingredient, -1) == 's') {
                                     $result = ''.$quantity.' '.$measurement.' '.$extraInfo.' '.$ingredient.''; 
                                 } else {
                                     $result = ''.$quantity.' '.$measurement.'s '.$extraInfo.' '.$ingredient.'';  
@@ -681,7 +681,12 @@ public function confirmIngredient() {
                                 if($ingredient == 'Potato' || $ingredient == 'Tomato'){
                                     $result = ''.$quantity.' '.$extraInfo.' '.$ingredient.'es';
                                     } else {
-                                    $result = ''.$quantity.' '.$extraInfo.' '.$ingredient.'s';
+
+                                    if(substr($ingredient, -1) == 's') {
+                                        $result = ''.$quantity.' '.$extraInfo.' '.$ingredient;
+                                    } else {
+                                        $result = ''.$quantity.' '.$extraInfo.' '.$ingredient.'s';
+                                    }    
                                 }
                             }
                         } else {
